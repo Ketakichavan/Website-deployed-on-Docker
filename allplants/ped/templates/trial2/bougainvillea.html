@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bougainvillea plant</title>
+    <link rel="stylesheet" href="{% static 'css/trop.css' %}">
+    <style>
+      body::before {
+        content: '';
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        height: 900px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.25;
+        z-index: -1;
+        pointer-events: none;
+        background-image: url('{% static "images/Bougainvillea1.webp" %}');
+      }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar second-navbar">
+        <ul class="sidebar">
+            <li onclick="hideSidebar()">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#000">
+                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg></a>
+            </li>
+            <li><a href="{% url 'homee' %}">HOME</a></li>
+            <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+            <li><a href="{% url 'outdoor' %}">Outdoor Plant</a></li>
+            <li><a href="{% url 'homereme' %}">Home Remedies</a></li>
+            <li><a href="{% url 'myplants' %}">Go to My Plants</a></li>
+            <li><a href="{% url 'blogs' %}">BLOGS</a></li>
+        </ul>
+  
+    </nav>
+</header>
+
+<header id="title">
+    Bougainvillea Plant 🌺
+</header>
+
+<section>
+    <h3>Images & Descriptions</h3>
+    <div class="image-gallery">
+        <div class="image-card">
+            <img src="{% static 'images/bougainvillea2.webp' %}" alt="Bougainvillea Plant" />
+            <p>Bougainvillea blooms cascade in vibrant shades of pink, purple, and orange — thriving best under full tropical sunlight and dry conditions.</p>
+        </div>
+        <div class="image-card">
+            <img src="{% static 'images/bougainvillea3.webp' %}" alt="Bougainvillea Branches" />
+            <p>This hardy climber spreads quickly, covering walls and fences with paper-thin bracts that look like petals surrounding tiny white flowers.</p>
+        </div>
+        <div class="image-card">
+            <img src="{% static 'images/bougainvillea4.jpg' %}" alt="Bougainvillea Close-up" />
+            <p>Low-maintenance and drought-tolerant, bougainvillea adds a splash of color to any garden and symbolizes passion and resilience.</p>
+        </div>
+    </div>
+</section>
+
+<section>
+    <h3>Steps to Grow Bougainvillea Plant Outdoors</h3>
+    <ol>
+        <li><strong>Pick a Sunny Location:</strong> <br>Bougainvillea loves bright sunlight! Choose a spot that gets at least 6 hours of direct sun every day.</li>
+        <li><strong>Use Well-Drained Soil:</strong> <br>It grows best in slightly acidic, well-draining soil. Avoid heavy clay and water-logged areas to prevent root rot.</li>
+        <li><strong>Plant with Care:</strong> <br>Dig a hole twice as wide as the root ball. Gently place the plant and backfill with soil, pressing lightly to secure.</li>
+        <li><strong>Water Sparingly:</strong> <br>Water deeply after planting. Once established, only water when the top soil is dry — bougainvillea prefers dry spells!</li>
+        <li><strong>Fertilize Occasionally:</strong> <br>Feed with a balanced fertilizer once a month during the growing season to encourage vibrant blooms.</li>
+        <li><strong>Provide Support:</strong> <br>If growing as a climber, offer a trellis, fence, or wall for support. Bougainvillea vines love to sprawl and climb!</li>
+        <li><strong>Prune to Shape:</strong> <br>After flowering, prune lightly to maintain shape and encourage new growth. Don’t be afraid to trim it back!</li>
+        <li><strong>Protect in Cold Weather:</strong> <br>Bougainvillea doesn’t like frost. In cooler regions, cover the plant or bring potted ones indoors during winter.</li>
+        <li><strong>Watch the Colors Pop:</strong> <br>With proper sunlight and care, it will burst into colorful bracts — pink, purple, red, or orange!</li>
+        <li><strong>Enjoy the Bloom Show:</strong> <br>Bougainvillea blooms best when slightly stressed — less water and no overfeeding! Let it thrive on a little tough love.</li>
+    </ol>
+    </section>
+
+    <section>
+        <h3>Fun Facts About Bougainvillea Plants</h3>
+        <div class="fun-facts">
+            <ul>
+                <li><strong>Not the Flower!</strong> The vibrant colors aren’t from petals — they’re specialized leaves called bracts!</li>
+                <li><strong>Tough Beauty:</strong> Bougainvillea thrives in dry, sunny conditions and can tolerate drought better than many plants.</li>
+                <li><strong>Climber or Shrub?</strong> It can be trained as a vine, shaped into a hedge, or grown as a potted bonsai — super versatile!</li>
+                <li><strong>Color-Changing:</strong> Some bougainvillea varieties can change colors as they mature or with seasons!</li>
+                <li><strong>Low Maintenance:</strong> Once established, bougainvillea needs very little care — perfect for busy or beginner gardeners!</li>
+            </ul>
+        </div>
+    </section>
+
+
+<section>
+    <h3>FAQs</h3>
+    <div class="faq-item">
+        <div class="faq-question">🌿 What’s the ideal time to prune Bougainvillea?</div>
+        <div class="faq-answer">The best time to prune is right after a blooming cycle. Regular pruning helps maintain shape and encourages more flowers.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">🪴 Can Bougainvillea grow in pots?</div>
+        <div class="faq-answer">Yes! Bougainvillea does well in containers, as long as they have good drainage and are placed in sunny spots.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">🌸 Why isn’t my Bougainvillea blooming?</div>
+        <div class="faq-answer">Lack of sunlight, overwatering, or too much fertilizer can reduce blooming. Make sure it gets enough sun and slightly dry soil between waterings.</div>
+    </div>
+</section>
+
+<script>
+    // Toggle FAQ answers
+    document.querySelectorAll('.faq-question').forEach((question) => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+        });
+    });
+
+
+    // for bookmark
+    function savePlant(plantPage) {
+    fetch('/save-plant/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCSRFToken()
+        },
+        body: `plant_name=Bougainvillea&plant_page=${plantPage}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert("🌿 Bougainvillea saved to your garden!");
+        } else {
+            alert("⚠️ Failed to save the plant.");
+        }
+    });
+}
+
+function getCSRFToken() {
+    let cookie = document.cookie.split('; ').find(row => row.startsWith('csrftoken'));
+    return cookie ? cookie.split('=')[1] : '';
+}
+
+</script>
+
+<footer>
+    <p>Ready to grow your own Bougainvillea plant? 🌿</p>
+    <button onclick="savePlant('bougainvillea.html')"> 🌴 Plant Now</button>
+</footer>
+
+
+</body>
+</html>

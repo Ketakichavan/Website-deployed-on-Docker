@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coconut Plant</title>
+    <link rel="stylesheet" href="{% static 'css/trop.css' %}">
+    <style>
+        body::before {
+            content: '';
+            position: fixed;
+            top: 60%;
+            transform: translateY(-50%);
+            width: 1000px;
+            height: 1500px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.08;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 30%;
+            transform: translateY(-50%);
+            width: 800px;
+            height: 1200px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: right;
+            opacity: 0.08;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::before {
+            left: 0;
+            background-image: url("{% static 'images/coco-left.jpg' %}");
+        }
+
+        body::after {
+            right: 0;
+            background-image: url("{% static 'images/coco-right.avif' %}");
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar second-navbar">
+            <ul class="sidebar">
+                <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+                <li><a href="{% url 'homee' %}">HOME</a></li>
+                <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+                <li><a href="{% url 'outdoor' %}">Outdoor Plant</a></li>
+                <li><a href="{% url 'homereme' %}">Home Remedies</a></li>
+                <li><a href="{% url 'myplants' %}">Go to My Plants</a></li>
+                <li><a href="{% url 'blogs' %}">BLOGS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <header id="title">
+        Coconut Plant 🥥
+    </header>
+
+    <section>
+        <h3>Images & Descriptions</h3>
+        <div class="image-gallery">
+            <div class="image-card">
+                <img src="{% static 'images/coco1.jpg' %}" alt="Coconut Sapling" />
+                <p>Young coconut sapling thriving in sandy soil near the coast. Its slender green leaves sway gently with the breeze.</p>
+            </div>
+            <div class="image-card">
+                <img src="{% static 'images/coco2.jpg' %}" alt="Mature Coconut Tree" />
+                <p>A mature coconut tree standing tall with a crown of long feather-like fronds and a cluster of coconuts forming underneath.</p>
+            </div>
+            <div class="image-card">
+                <img src="{% static 'images/coco3.jpg' %}" alt="Green Coconuts" />
+                <p>Close-up of green coconuts hanging from the tree, rich in water and nutrients — a true gift of tropical nature.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+    <h3>Steps to Grow Coconut Plant Outdoors</h3>
+    <ol>
+        <li><strong>Pick a Sunny, Coastal-Like Spot:</strong> <br>Coconut trees love heat and sunlight! Make sure to plant them where they’ll get full sun for at least 8 hours daily.</li>
+        <li><strong>Choose a Healthy Coconut:</strong> <br>Select a mature coconut with water inside (shake to hear the slosh!). It should still have its husk and no cracks or mold.</li>
+        <li><strong>Sprout the Coconut:</strong> <br>Place the coconut on its side in a container with damp sand or soil. Keep it warm and moist — sprouting takes 3–6 weeks.</li>
+        <li><strong>Plant in Loose, Well-Draining Soil:</strong> <br>Once sprouted, dig a shallow hole and bury the coconut halfway into the soil. Ensure sandy, loamy, and well-draining soil for root development.</li>
+        <li><strong>Water Frequently but Lightly:</strong> <br>Keep the soil slightly moist — not soaked. Young coconuts need more frequent watering than mature ones.</li>
+        <li><strong>Mulch for Moisture & Protection:</strong> <br>Add mulch like dried leaves or coir husk around the base to retain moisture and reduce weed growth.</li>
+        <li><strong>Fertilize Every 2 Months:</strong> <br>Use a balanced fertilizer rich in potassium, magnesium, and boron. Organic compost also helps boost soil quality.</li>
+        <li><strong>Shelter Young Plants:</strong> <br>Protect young coconuts from strong winds or heavy rain until the trunk strengthens. Support with stakes if needed.</li>
+        <li><strong>Be Patient:</strong> <br>Coconut palms take about 5–6 years to produce their first fruits. But once mature, they can produce up to 75 coconuts a year!</li>
+        <li><strong>Harvest with Care:</strong> <br>Use a pole cutter or climb safely to harvest mature coconuts. They're ready when you hear water inside and the shell starts browning.</li>
+    </ol>
+    </section>
+
+    <section>
+        <h3>Fun Facts About Coconut Plants</h3>
+        <div class="fun-facts">
+            <ul>
+                <li><strong>Natural Filter:</strong> Coconut shells and husks can filter water and are even used in natural air purifiers!</li>
+                <li><strong>Grows Anywhere Warm:</strong> Coconut palms thrive in tropical coastal areas and sandy soil, making them perfect beach buddies.</li>
+                <li><strong>Water Wonder:</strong> The water inside green coconuts is sterile and full of electrolytes — often used as natural hydration!</li>
+                <li><strong>Tree of Life:</strong> Every part of the coconut plant — fruit, leaves, husk, wood — is used in food, shelter, crafts, or tools.</li>
+                <li><strong>Storm Survivors:</strong> Coconut palms are flexible and can withstand heavy winds — their bendy trunks help them survive tropical storms.</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section>
+        <h3>FAQs</h3>
+        <div class="faq-item">
+            <div class="faq-question">🌴 When will my coconut tree start producing coconuts?</div>
+            <div class="faq-answer">It typically takes 6–10 years for a coconut tree to begin bearing fruit, and peak production starts around 15–20 years.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">☀️ How much sunlight does a coconut tree really need?</div>
+            <div class="faq-answer">Absolutely! Coconut palms love full sun and require at least 6–8 hours of direct sunlight daily for healthy growth.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">💦 What’s the right watering routine for coconut plants?</div>
+            <div class="faq-answer">Water young coconut plants 2–3 times a week. Mature palms usually need less frequent watering unless the weather is very dry.</div>
+        </div>
+    </section>
+
+<script>
+    // Toggle FAQ answers
+    document.querySelectorAll('.faq-question').forEach((question) => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+        });
+    });
+
+    // for bookmark
+    function savePlant(plantPage) {
+    fetch('/save-plant/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCSRFToken()
+        },
+        body: `plant_name=Coconut&plant_page=${plantPage}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert("🌿 Coconut saved to your garden!");
+        } else {
+            alert("⚠️ Failed to save the plant.");
+        }
+    });
+}
+
+function getCSRFToken() {
+    let cookie = document.cookie.split('; ').find(row => row.startsWith('csrftoken'));
+    return cookie ? cookie.split('=')[1] : '';
+}
+
+</script>
+
+<footer>
+    <p>Ready to grow your own Coconut plant? 🌿</p>
+    <button onclick="savePlant('coconut.html')"> 🌴 Plant Now</button>
+</footer>
+
+</body>
+</html>

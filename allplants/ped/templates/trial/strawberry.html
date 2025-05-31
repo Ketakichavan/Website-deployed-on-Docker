@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow a Healthy Strawberry Plant</title>
+    <link rel="stylesheet" href="{% static 'css/styletrial.css' %}">
+</head>
+<body>
+    <header id = "header3">
+        <h1>How to Grow a Healthy Strawberry Plant</h1>
+    </header>
+
+    <div class="gallery3">
+        <div class="thumbnails">
+            <img src="{% static 'images/st1.webp' %}">
+            <img src="{% static 'images/st2.jpg' %}">
+            <img src="{% static 'images/st3.jpg' %}">
+            <img src="{% static 'images/st4.jpg' %}">
+        </div>
+
+        <div class="main-image">
+            <img id="displayedImage" src="{% static 'images/st5.jpg' %}">
+        
+    <!-- Temperature & water --> 
+        <div class="status-box"> 
+            <div class="icon temp-icon"> </div> 
+            <div class="status-text"> 
+                <p>Temperature</p> 
+                <h3 class="glow-text">5°C to 20°C</h3> 
+            </div> 
+        </div> 
+
+        <div class="status-box"> 
+            <div class="icon water-icon"></div> 
+            <div class="status-text"> 
+                <p>Water</p> 
+                <h3 class="glow-text2">2–3 times/week</h3> 
+            </div> 
+        </div> 
+    </div>
+
+
+    <section class="content">
+    
+        <h2 id = "mainhead3"> Planting Steps</h2>
+        <ol>
+            <li>Choose a sunny location with well-draining soil.</li>
+            <li>Dig small holes and space plants 12–18 inches apart.</li>
+            <li>Place roots straight down and crown at soil level.</li>
+            <li>Water thoroughly after planting.</li>
+        </ol>
+
+        <h2 id = "mainhead3">1. Choose the Right Strawberry Variety</h2>
+        <ul>
+            <li>June-bearing, Everbearing, and Day-neutral are main types.</li>
+            <li>Choose based on climate and harvest preferences.</li>
+        </ul>
+        
+        <div class="dropdown">
+            <button onclick="toggleDropdown('soil')">2. Best Soil for Growing Strawberries</button>
+            <div class="dropdown-content" id="soil">
+                <ul>
+                    <li><strong>Type:</strong> Loamy, well-draining soil enriched with compost.</li>
+                    <li><strong>pH Level:</strong> Slightly acidic (5.5–6.8).</li>
+                    <li><strong>Preparation:</strong> Mix in aged manure and organic matter.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button onclick="toggleDropdown('water')">3. Water Requirements</button>
+            <div class="dropdown-content" id="water">
+                <ul>
+                    <li>Keep soil consistently moist, especially during fruiting.</li>
+                    <li>Water early in the day to allow foliage to dry.</li>
+                    <li>Use drip irrigation or water at the base to avoid leaf diseases.</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="dropdown">
+            <button onclick="toggleDropdown('fertilizer')">4. Fertilizers for Healthy Strawberries</button>
+            <div class="dropdown-content" id="fertilizer">
+                <ul>
+                    <li><strong>Organic Options:</strong> Compost, fish emulsion, aged manure.</li>
+                    <li><strong>Chemical Fertilizers:</strong> Balanced fertilizer like 10-10-10 applied before flowering.</li>
+                    <li>Fertilize lightly during growing season, avoid overfeeding.</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="dropdown">
+            <button onclick="toggleDropdown('location')">5. Best Location for Growing Strawberries</button>
+            <div class="dropdown-content" id="location">
+                <ul>
+                    <li>Full sun (at least 6–8 hours daily).</li>
+                    <li>Plant in raised beds or containers for better drainage.</li>
+                    <li>Rotate planting spot yearly to prevent soil-borne diseases.</li>
+                </ul>
+            </div>
+        </div>
+    
+
+    </div>
+
+        <h2 id="tips3">Final Tips</h2>
+        <p id="tipse3">Mulch with straw to retain moisture and keep fruits clean. Pinch off runners for larger berries. Protect plants from birds with netting.</p>
+    </section>
+
+    
+    <h2 id="tips3">Strawberry Plant Care Tips</h2>
+    <ul id="t3">
+        <li><strong>Pruning:</strong> Remove yellow leaves and old runners to focus energy on fruiting.</li>
+        <li><strong>Pest Control:</strong> Watch for slugs, aphids, and spider mites; use organic deterrents.</li>
+        <li><strong>Disease Prevention:</strong> Avoid overhead watering; space plants well for air circulation.</li>
+    </ul>
+
+    <script>
+        function toggleDropdown(id) {
+            var content = document.getElementById(id);
+            content.style.display = (content.style.display === "block") ? "none" : "block";
+        }
+
+        function savePlant(plantPage) {
+    fetch('/save-plant/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCSRFToken()
+        },
+        body: `plant_name=Strawberry&plant_page=${plantPage}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert("🌿 Strawberry saved to your garden!");
+        } else {
+            alert("⚠️ Failed to save the plant.");
+        }
+    });
+}
+
+function getCSRFToken() {
+    let cookie = document.cookie.split('; ').find(row => row.startsWith('csrftoken'));
+    return cookie ? cookie.split('=')[1] : '';
+}
+    </script>
+
+    <footer id = "footer3">
+        <button onclick="savePlant('strawberry')" id="plantnow"> Plant now</button>
+    </footer>
+</body>
+</html>

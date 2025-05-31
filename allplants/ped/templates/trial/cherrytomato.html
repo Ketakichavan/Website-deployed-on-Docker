@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow a Healthy Cherry Tomato Plant</title>
+    <link rel="stylesheet" href="{% static 'css/styletrial.css' %}">
+</head>
+<body>
+    <header id = "header5">
+        <h1>How to Grow a Healthy Cherry Tomato Plant</h1>
+    </header>
+
+    <div class="gallery5">
+        <div class="thumbnails">
+            <img src="{% static 'images/ct1.webp' %}">
+            <img src="{% static 'images/ct2.jpeg' %}">
+            <img src="{% static 'images/ct3.webp' %}">
+            <img src="{% static 'images/ct4.jpg' %}">
+        </div>
+    
+        <div class="main-image">
+            <img id="displayedImage" src="{% static 'images/ct5.jpg' %}">
+        
+        <!-- Temperature & water --> 
+        <div class="status-box"> 
+            <div class="icon temp-icon"> </div> 
+            <div class="status-text"> 
+                <p>Temperature</p> 
+                <h3 class="glow-text">10°C to 28°C</h3> 
+            </div> 
+        </div> 
+
+        <div class="status-box"> 
+            <div class="icon water-icon"></div> 
+            <div class="status-text"> 
+                <p>Water</p> 
+                <h3 class="glow-text2">2–3 times/week</h3> 
+            </div> 
+        </div> 
+    </div>
+    
+
+    <section class="content">
+    
+        <h2 id = "mainhead5"> Planting Steps</h2>
+        <ol>
+            <li>Start seeds indoors 6–8 weeks before the last frost date.</li>
+            <li>Transplant seedlings outdoors after danger of frost passes.</li>
+            <li>Plant deeply, burying 2/3 of the stem to promote strong roots.</li>
+            <li>Water thoroughly after planting and mulch the base.</li>
+        </ol>
+
+        <h2 id = "mainhead5">1. Choose the Right Cherry Tomato Variety</h2>
+        <ul>
+            <li>Popular varieties: Sweet 100, Sungold, Black Cherry, Tiny Tim.</li>
+            <li>Choose determinate or indeterminate types based on space.</li>
+        </ul>
+        
+        <div class="dropdown">
+            <button onclick="toggleDropdown('soil')">2. Best Soil for Growing Cherry Tomatoes</button>
+            <div class="dropdown-content" id="soil">
+                <ul>
+                    <li><strong>Type:</strong> Rich, well-draining loamy soil.</li>
+                    <li><strong>pH Level:</strong> Slightly acidic (6.0–6.8).</li>
+                    <li><strong>Preparation:</strong> Add compost or aged manure before planting.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button onclick="toggleDropdown('water')">3. Water Requirements</button>
+            <div class="dropdown-content" id="water">
+                <ul>
+                    <li>Water deeply and consistently (1–2 inches per week).</li>
+                    <li>Water at the base to avoid wetting foliage.</li>
+                    <li>Mulch to retain moisture and reduce evaporation.</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="dropdown">
+            <button onclick="toggleDropdown('fertilizer')">4. Fertilizers for Healthy Cherry Tomatoes</button>
+            <div class="dropdown-content" id="fertilizer">
+                <ul>
+                    <li><strong>Organic Options:</strong> Compost tea, seaweed extract, fish emulsion.</li>
+                    <li><strong>Chemical Fertilizers:</strong> Low nitrogen, higher phosphorus blend (e.g., 5-10-10).</li>
+                    <li>Feed every 2–3 weeks during the growing season.</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="dropdown">
+            <button onclick="toggleDropdown('location')">5. Best Location for Growing Cherry Tomatoes</button>
+            <div class="dropdown-content" id="location">
+                <ul>
+                    <li>Full sun (at least 6–8 hours of direct sunlight daily).</li>
+                    <li>Support with cages, stakes, or trellises as they grow.</li>
+                    <li>Ensure good air circulation to reduce disease risk.</li>
+                </ul>
+            </div>
+        </div>
+    
+
+    </div>
+
+        <h2 id="tips5">Final Tips</h2>
+        <p id="tipse">Harvest cherry tomatoes when they are firm, glossy, and fully colored. Prune suckers for better airflow and fruit production. Rotate planting location yearly to avoid soil-borne diseases.</p>
+    </section>
+
+    
+    <h2 id="tips5">Cherry Tomato Plant Care Tips</h2>
+    <ul id="t5">
+        <li><strong>Pruning:</strong> Remove lower leaves and side shoots to encourage vertical growth.</li>
+        <li><strong>Pest Control:</strong> Watch for aphids, whiteflies, and tomato hornworms; use neem oil or insecticidal soap.</li>
+        <li><strong>Disease Prevention:</strong> Avoid overhead watering; use mulch and crop rotation to prevent blight and wilt.</li>
+    </ul>
+
+    <script>
+        function toggleDropdown(id) {
+            var content = document.getElementById(id);
+            content.style.display = (content.style.display === "block") ? "none" : "block";
+        }
+
+        function toggleDropdown(id) {
+            var content = document.getElementById(id);
+            content.style.display = (content.style.display === "block") ? "none" : "block";
+        }
+
+        //for bookmark
+        function savePlant(plantPage) {
+    fetch('/save-plant/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCSRFToken()
+        },
+        body: `plant_name=Cherrytomato&plant_page=${plantPage}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert("🌿 Cherry Tomato saved to your garden!");
+        } else {
+            alert("⚠️ Failed to save the plant.");
+        }
+    });
+}
+
+function getCSRFToken() {
+    let cookie = document.cookie.split('; ').find(row => row.startsWith('csrftoken'));
+    return cookie ? cookie.split('=')[1] : '';
+}
+    </script>
+
+    <footer id = "footer5">
+        <button onclick="savePlant('cherrytomato')" id="plantnow"> Plant now</button>
+    </footer>
+</body>
+</html>

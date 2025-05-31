@@ -1,0 +1,321 @@
+/* Reset default margins and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Page Layout */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eaf4e9; /* Light green background */
+    color: #333;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.second-navbar{
+    font-size: 1rem;
+    background-color: #AADCB6;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 550;
+    height: 60px;
+}
+
+.sidebar {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav li{
+    height: 30px;
+}
+
+nav a{
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+nav a:hover{
+    background-color: #6faf7c;
+}
+
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color:rgb(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li{
+    width: 100%;
+}
+
+.sidebar a{
+    width: 100%;
+    font-family: 'Cursive', 'Brush Script Mt', sans-serif;
+    font-size: large;
+}
+
+.menu-button{
+    display: none;
+}
+
+@media(max-width:900px){
+    .hideOnMobile{
+        display: none;
+    }
+    .menu-button{
+        display: block;
+    }
+}
+@media(max-width:400px){
+    .sidebar{
+        width: 100%;
+    }
+}
+
+/* Container for content */
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles */
+h1, h2 {
+    text-align: center;
+    color: #4CAF50;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #333;
+    font-size: 1.6rem;
+}
+
+/* Create Blog Icon */
+.create-blog-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.create-blog-icon img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.create-blog-icon span {
+    font-size: 1.2rem;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.create-blog-icon:hover {
+    opacity: 0.8;
+}
+
+/* Blog Form Styles */
+.blog-form {
+    display: none;  /* Hidden by default */
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-form input, .blog-form textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px 0;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #555;
+    background-color: #f5f5f5;
+}
+
+.blog-form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.blog-form button:hover {
+    background-color: #45a049;
+}
+
+/* Blog Post Styles */
+#blogPosts {
+    margin-top: 30px;
+}
+
+.blog-post {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.blog-post h3 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.blog-post p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+.blog-post small {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* Style for images within blog posts */
+.blog-post img {
+    max-width: 100%;     /* Ensure the image scales with the container */
+    height: auto;        /* Maintain aspect ratio */
+    max-height: 300px;   /* Set a maximum height */
+    margin-top: 10px;    /* Add space above the image */
+}
+
+/* Style the delete button */
+.delete-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px;
+}
+
+/* Style the bin icon */
+.delete-button img {
+    width: 20px;  /* Make the icon size manageable */
+    height: 20px;
+    vertical-align: middle;
+    transition: transform 0.2s ease; /* Smooth transition on hover */
+}
+
+/* Style the delete button on hover */
+.delete-button:hover img {
+    transform: scale(1.2); /* Slightly increase the size of the icon when hovered */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .blog-form input, .blog-form textarea {
+        font-size: 1rem;
+    }
+
+    .blog-form button {
+        font-size: 1rem;
+    }
+
+    .blog-post h3 {
+        font-size: 1.5rem;
+    }
+
+    .blog-post p {
+        font-size: 1.1rem;
+    }
+}
+
+.comment-section {
+    margin-top: 15px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+
+.comment-section form {
+    display: flex;
+    margin-top: 10px;
+    gap: 5px;
+}
+
+.comment-section input {
+    flex: 1;
+    padding: 5px;
+}
+
+.comment-section button {
+    padding: 5px 10px;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.comment-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.comment-section li {
+    margin-bottom: 5px;
+}
+

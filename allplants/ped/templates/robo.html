@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Robot Verification</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .robot-container {
+      background: white;
+      padding: 50px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 90%;
+      max-width: 420px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .robot-container h2 {
+      font-size: 26px;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    .robot-icon {
+      font-size: 60px;
+      color: #4caf50;
+      margin-bottom: 20px;
+    }
+
+    .checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    .checkbox-wrapper input[type="checkbox"] {
+      width: 22px;
+      height: 22px;
+      accent-color: #4caf50;
+      cursor: pointer;
+    }
+
+    .checkbox-wrapper label {
+      font-size: 18px;
+      color: #555;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    button {
+      padding: 12px 28px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover:enabled {
+      background-color: #43a047;
+      box-shadow: 0 4px 12px rgba(67, 160, 71, 0.4);
+    }
+
+    button:disabled {
+      background-color: #b0bec5;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 500px) {
+      .robot-container {
+        padding: 40px 20px;
+      }
+
+      .robot-container h2 {
+        font-size: 22px;
+      }
+
+      .checkbox-wrapper label {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- this option is done using python Django  -->
+  <form method="post">
+    {% csrf_token %}
+    <div class="robot-icon">🤖</div>
+    <h2>Confirm You're Not a Robot</h2>
+    <div class="checkbox-wrapper">
+      <input type="checkbox" id="notRobot" name="notRobot" />
+      <label for="notRobot">I am not a robot</label>
+    </div>
+    <button type="submit" id="continueBtn" disabled>Continue</button>
+  </form>
+  
+  <script>
+    const checkbox = document.getElementById("notRobot");
+    const button = document.getElementById("continueBtn");
+  
+    checkbox.addEventListener("change", () => {
+      button.disabled = !checkbox.checked;
+    });
+  </script>
+  
+</body>
+</html>

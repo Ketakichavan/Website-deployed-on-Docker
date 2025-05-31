@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hibiscus Plant</title>
+    <link rel="stylesheet" href="{% static 'css/trop.css' %}">
+    <style>
+        body::before {
+            content: '';
+            position: fixed;
+            top: 60%;
+            transform: translateY(-50%);
+            width: 600px;
+            height: 1000px;
+            background-image: url('{% static "images/hibiscus-left.jpg" %}');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left;
+            opacity: 0.08;
+            z-index: -1;
+            pointer-events: none;
+            left: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 30%;
+            transform: translateY(-50%);
+            width: 500px;
+            height: 900px;
+            background-image: url('{% static "images/hibiscus-right.jpg" %}');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: right;
+            opacity: 0.08;
+            z-index: -1;
+            pointer-events: none;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar second-navbar">
+            <ul class="sidebar">
+                <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+                <li><a href="{% url 'homee' %}">HOME</a></li>
+                <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+                <li><a href="{% url 'outdoor' %}">Outdoor Plant</a></li>
+                <li><a href="{% url 'homereme' %}">Home Remedies</a></li>
+                <li><a href="{% url 'myplants' %}">Go to My Plants</a></li>
+                <li><a href="{% url 'blogs' %}">BLOGS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <header id="title">
+        Hibiscus Plant 🌿
+    </header>
+
+    <section>
+        <h3>Images & Descriptions</h3>
+        <div class="image-gallery">
+            <div class="image-card">
+                <img src="{% static 'images/hibiscus1.jpg' %}" alt="Hibiscus Blossom" />
+                <p>Bright hibiscus blossoms bloom vibrantly in full sunlight, attracting bees, butterflies, and hummingbirds with their bold colors and large petals.</p>
+            </div>
+            <div class="image-card">
+                <img src="{% static 'images/hibiscus2.webp' %}" alt="Hibiscus Plant" />
+                <p>The hibiscus plant flourishes in well-drained soil and warm climates, often growing as a bush or small tree with glossy green leaves and showy flowers.</p>
+            </div>
+            <div class="image-card">
+                <img src="{% static 'images/hibiscus3.jpg' %}" alt="Hibiscus in Use" />
+                <p>Known for its beauty and benefits, the hibiscus is used not only as an ornamental plant but also in teas, skincare, and traditional remedies.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section>
+        <h3>Hibiscus Care Info</h3>
+        <div class="status-container">
+            <div class="status-box">
+            <div class="status-text">
+                <p>Temperature</p>
+                <h3>18°C to 24°C</h3>
+            </div>
+            </div>
+            <div class="status-box">
+            <div class="status-text">
+                <p>Water</p>
+                <h3>1 time/week</h3>
+            </div>
+            </div>
+        </div>
+    </section> -->
+
+
+    <section>
+    <h3>Steps to Grow Hibiscus Plant Outdoors</h3>
+    <ol>
+        <li><strong>Pick a Sunny Location:</strong><br>Hibiscus loves full sun! Choose a spot that receives 6–8 hours of sunlight daily for best blooming.</li>
+        <li><strong>Use Well-Drained Soil:</strong><br>Plant in slightly acidic to neutral soil (pH 6.0–7.0) that drains well and is rich in organic matter.</li>
+        <li><strong>Plant with Care:</strong><br>Dig a hole twice the width of the root ball and just as deep. Place the hibiscus and fill gently with soil, firming it down.</li>
+        <li><strong>Water Regularly:</strong><br>Keep the soil evenly moist, especially during the flowering season. Avoid overwatering to prevent root rot.</li>
+        <li><strong>Fertilize Monthly:</strong><br>Use a balanced, water-soluble fertilizer or one high in potassium to promote vibrant blooms. Apply during the growing season.</li>
+        <li><strong>Mulch for Moisture:</strong><br>Apply organic mulch like bark or compost around the base to retain moisture and suppress weeds.</li>
+        <li><strong>Prune for Shape:</strong><br>Prune lightly in early spring to encourage bushy growth and more blooms. Remove any dead or crossing branches.</li>
+        <li><strong>Protect from Frost:</strong><br>Hibiscus is frost-sensitive. In colder climates, use frost cloths or grow in pots that can be moved indoors during winter.</li>
+        <li><strong>Enjoy the Blooms:</strong><br>Hibiscus flowers usually last just one day, but the plant keeps blooming if cared for properly.</li>
+        <li><strong>Attract Pollinators:</strong><br>Your hibiscus will bring bees, butterflies, and hummingbirds to your garden—adding color and life.</li>
+    </ol>
+    </section>
+
+    <section>
+    <h3>Fun Facts About Hibiscus Plants</h3>
+    <div class="fun-facts">
+        <ul>
+        <li><strong>One-Day Wonders!</strong> Most hibiscus flowers bloom for just a day, but the plant keeps producing new blooms regularly.</li>
+        <li><strong>Tea Time Favorite:</strong> Hibiscus petals are used to make a tart, ruby-red herbal tea enjoyed worldwide for its refreshing taste and health benefits.</li>
+        <li><strong>Pollinator Magnet:</strong> The large, colorful flowers attract bees, butterflies, and hummingbirds to your garden.</li>
+        <li><strong>Beauty & Benefits:</strong> Hibiscus is often used in natural skincare for its brightening and anti-aging properties.</li>
+        <li><strong>Symbol of Delicacy:</strong> In many cultures, hibiscus flowers represent beauty, love, and femininity — often worn in hair or used in ceremonies.</li>
+        </ul>
+    </div>
+    </section>
+
+
+    <section>
+        <h3>FAQs</h3>
+        <div class="faq-item">
+            <div class="faq-question">🌺 When is the best time to plant hibiscus?</div>
+            <div class="faq-answer">The best time to plant hibiscus is in spring or early summer when the weather is warm and there's no risk of frost.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">✂️ Should I prune my hibiscus plant?</div>
+            <div class="faq-answer">Yes! Pruning helps encourage new growth and more flowers. The best time to prune is early spring before blooming begins.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">🐛 Are hibiscus plants prone to pests?</div>
+            <div class="faq-answer">Hibiscus can attract aphids, whiteflies, and spider mites. Regular inspection and neem oil sprays can help keep pests under control.</div>
+        </div>
+    </section>
+
+    <script>
+        // Toggle FAQ answers
+        document.querySelectorAll('.faq-question').forEach((question) => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+
+        // for bookmark
+    function savePlant(plantPage) {
+    fetch('/save-plant/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCSRFToken()
+        },
+        body: `plant_name=Hibiscus&plant_page=${plantPage}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert("🌿 Hibiscus saved to your garden!");
+        } else {
+            alert("⚠️ Failed to save the plant.");
+        }
+    });
+}
+
+function getCSRFToken() {
+    let cookie = document.cookie.split('; ').find(row => row.startsWith('csrftoken'));
+    return cookie ? cookie.split('=')[1] : '';
+}
+    </script>
+
+    <footer>
+        <p>Ready to grow your own Hibiscus plant? 🌿</p>
+        <button onclick="savePlant('hibiscus.html')"> 🌴 Plant Now</button>
+    </footer>
+
+</body>
+</html>

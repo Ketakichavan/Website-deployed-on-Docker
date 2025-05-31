@@ -1,0 +1,126 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outdoor Plants</title>
+    <link rel="stylesheet" href="{% static 'css/OUTDOOR.css' %}">
+</head>
+<body>
+
+<header>
+    <nav class="navbar second-navbar">
+        <ul>
+            <li><a href="{% url 'homee' %}">Home</a></li>
+            <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+            <li><a href="{% url 'outdoor' %}">Outdoor Plants</a></li>
+            <li><a href="{% url 'homereme' %}">Home Remedies</a></li>
+            <li><a href="{% url 'myplants' %}">My Plants</a></li>
+            <li><a href="{% url 'blogs' %}">Blogs</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section id="hero">
+    <h1>Explore Our Outdoor Plants</h1>
+    <p>Discover a collection of plants that can elevate your garden.</p>
+</section>
+
+<!-- Plants Section -->
+<section id="plants-section">
+    <h2>Our Featured Plants</h2>
+
+    <div class="plants-container" id="plant-container">
+
+        <!-- Static cards -->
+        <a href="{% url 'tropicalout' %}" class="plant-link">
+            <div class="plant-card" style="background-image: url('{% static "images/tropical.jpg" %}');">
+                <div class="plant-name">Tropical - Rainforest Realm</div>
+            </div>
+        </a>
+
+        <a href="dry.html" class="plant-link">
+            <div class="plant-card" style="background-image: url('{% static "images/dry.jpg" %}');">
+                <div class="plant-name">Dry - Dune Kingdom</div>
+            </div>
+        </a>
+
+        <a href="#" class="plant-link">
+            <div class="plant-card" style="background-image: url('{% static "images/temprate.jpg" %}');">
+                <div class="plant-name">Temperate - Evergrove Dominion</div>
+            </div>
+        </a>
+
+        <a href="#" class="plant-link">
+            <div class="plant-card" style="background-image: url('{% static "images/Continental.jpeg" %}');">
+                <div class="plant-name">Continental - Ironwood Realm</div>
+            </div>
+        </a>
+
+        <a href="#" class="plant-link">
+            <div class="plant-card" style="background-image: url('{% static "images/polar.webp" %}');">
+                <div class="plant-name">Polar - Frostbound Kingdom</div>
+            </div>
+        </a>
+
+        <a href="#" class="plant-link">
+            <div class="plant-card" style="background-image: url('{% static "images/highland.jpg" %}');">
+                <div class="plant-name">Highland - Skycrest Dominion</div>
+            </div>
+        </a>
+    </div>
+</section>
+
+<script>
+    function showSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'flex';
+    }
+
+    function hideSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.style.display = 'none';
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        fetchPlants();
+    });
+
+    function fetchPlants() {
+        fetch("{% url 'fetchPlants' %}")
+            .then(response => response.json())
+            .then(plants => {
+                let container = document.getElementById("plant-container");
+
+                plants.forEach(plant => {
+                    const plantCard = document.createElement("div");
+                    plantCard.classList.add("plant-card");
+
+                    // Set background if image exists
+                    if (plant.images.length > 0) {
+                        plantCard.style.backgroundImage = `url('${plant.images[0]}')`;
+                    }
+
+                    const titleDiv = document.createElement("div");
+                    titleDiv.classList.add("plant-name");
+                    titleDiv.innerText = plant.title;
+
+                    plantCard.appendChild(titleDiv);
+                    container.appendChild(plantCard);
+                });
+
+                const urlParams = new URLSearchParams(window.location.search);
+                const lastAddedId = urlParams.get("lastAdded");
+                if (lastAddedId) {
+                    let lastPlant = document.getElementById("plant-" + lastAddedId);
+                    if (lastPlant) lastPlant.scrollIntoView({ behavior: "smooth" });
+                }
+            })
+            .catch(error => console.error("Error fetching plants:", error));
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow a Healthy Chinese Evergreen Plant</title>
+    <link rel="stylesheet" href="{% static 'css/styletrial.css' %}">
+</head>
+<body>
+    <header id = "header2">
+        <h1>How to Grow a Healthy Chinese Evergreen Plant</h1>
+    </header>
+
+    <div class="gallery2">
+        <div class="thumbnails">
+            <img src="{% static 'images/ce1.jpg' %}">
+            <img src="{% static 'images/ce2.jpg' %}">
+            <img src="{% static 'images/ce3.jpg' %}">
+            <img src="{% static 'images/ce4.jpg' %}">
+        </div>
+    
+        <div class="main-image">
+            <img id="displayedImage" src="{% static 'images/ce5.jpg' %}">
+        
+
+        <!-- Temperature & water --> 
+        <div class="status-box"> 
+            <div class="icon temp-icon"> </div> 
+            <div class="status-text"> 
+                <p>Temperature</p> 
+                <h3 class="glow-text">15°C to 28°C</h3> 
+            </div> 
+        </div> 
+
+        <div class="status-box"> 
+            <div class="icon water-icon"></div> 
+            <div class="status-text"> 
+                <p>Water</p> 
+                <h3 class="glow-text2">1 times/week</h3> 
+            </div> 
+        </div> 
+    </div>
+
+    <section class="content">
+    
+        <h2 id = "mainhead2"> Planting Steps</h2>
+        <ol>
+            <li>Choose a medium-sized pot with drainage holes.</li>
+            <li>Fill halfway with well-draining indoor potting mix.</li>
+            <li>Place plant in the center and cover roots with soil.</li>
+            <li>Lightly water and place in indirect light.</li>
+        </ol>
+
+        <h2 id = "mainhead2">1. Choose the Right Chinese Evergreen Variety</h2>
+        <ul>
+            <li>Popular varieties include Silver Bay, Red Aglaonema, Maria, and Emerald Beauty.</li>
+            <li>Choose based on foliage color and room lighting.</li>
+        </ul>
+        
+        <div class="dropdown">
+            <button onclick="toggleDropdown('soil')">2. Best Soil for Growing Chinese Evergreen</button>
+            <div class="dropdown-content" id="soil">
+                <ul>
+                    <li><strong>Type:</strong> Well-draining, peat-based potting soil.</li>
+                    <li><strong>pH Level:</strong> Slightly acidic to neutral (5.6–6.5).</li>
+                    <li><strong>Preparation:</strong> Mix with perlite or sand to improve aeration.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button onclick="toggleDropdown('water')">3. Water Requirements</button>
+            <div class="dropdown-content" id="water">
+                <ul>
+                    <li>Allow the top inch of soil to dry out between waterings.</li>
+                    <li>Water less frequently in winter.</li>
+                    <li>Avoid overwatering to prevent root rot.</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="dropdown">
+            <button onclick="toggleDropdown('fertilizer')">4. Fertilizers for Healthy Chinese Evergreen</button>
+            <div class="dropdown-content" id="fertilizer">
+                <ul>
+                    <li><strong>Organic Options:</strong> Compost tea, seaweed extract, worm castings.</li>
+                    <li><strong>Chemical Fertilizers:</strong> Diluted liquid houseplant fertilizer (balanced NPK).</li>
+                    <li>Feed every 6–8 weeks during spring and summer.</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="dropdown">
+            <button onclick="toggleDropdown('location')">5. Best Location for Growing Chinese Evergreen</button>
+            <div class="dropdown-content" id="location">
+                <ul>
+                    <li>Low to medium indirect light is ideal.</li>
+                    <li>Tolerates fluorescent lighting, making it great for offices.</li>
+                    <li>Keep away from direct sunlight to prevent leaf burn.</li>
+                </ul>
+            </div>
+        </div>
+    
+
+    </div>
+
+        <h2 id="tips2">Final Tips</h2>
+        <p id="tipse2">Rotate the plant regularly for even growth. Wipe leaves with a damp cloth to keep them clean. Chinese Evergreens are known for their air-purifying qualities and tolerance to neglect.</p>
+    </section>
+
+    
+    <h2 id="tips2">Chinese Evergreen Plant Care Tips</h2>
+    <ul id="t2">
+        <li><strong>Pruning:</strong> Trim yellow or old leaves near the base to promote new growth.</li>
+        <li><strong>Pest Control:</strong> Check occasionally for scale or mealybugs; treat with insecticidal soap.</li>
+        <li><strong>Disease Prevention:</strong> Avoid overwatering to prevent fungal infections like root rot.</li>
+    </ul>
+
+    <script>
+        function toggleDropdown(id) {
+            var content = document.getElementById(id);
+            content.style.display = (content.style.display === "block") ? "none" : "block";
+        }
+
+        function savePlant(plantPage) {
+    fetch('/save-plant/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCSRFToken()
+        },
+        body: `plant_name=Chineseever&plant_page=${plantPage}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert("🌿 Chinese Evergreen saved to your garden!");
+        } else {
+            alert("⚠️ Failed to save the plant.");
+        }
+    });
+}
+
+function getCSRFToken() {
+    let cookie = document.cookie.split('; ').find(row => row.startsWith('csrftoken'));
+    return cookie ? cookie.split('=')[1] : '';
+}
+    </script>
+
+    <footer id = "footer2">
+        <button onclick="savePlant('chineseever')" id="plantnow"> Plant now</button>
+    </footer>
+</body>
+</html>

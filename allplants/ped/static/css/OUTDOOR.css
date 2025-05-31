@@ -1,0 +1,219 @@
+/* General Page Layout */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eaf4e9; /* Light green background */
+    color: #333;
+}
+
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Second Navbar */
+.second-navbar{
+    font-size: 1rem;
+    background-color: #80ab94;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 550;
+    height: 60px;
+}
+
+.sidebar {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav li{
+    height: 30px;
+}
+
+nav a{
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+nav a:hover{
+    background-color: #4E635E;
+}
+
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color:rgb(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li{
+    width: 100%;
+}
+
+.sidebar a{
+    width: 100%;
+    font-family: 'Cursive', 'Brush Script Mt', sans-serif;
+    font-size: large;
+}
+
+.menu-button{
+    display: none;
+}
+
+@media(max-width:900px){
+    .hideOnMobile{
+        display: none;
+    }
+    .menu-button{
+        display: block;
+    }
+}
+@media(max-width:400px){
+    .sidebar{
+        width: 100%;
+    }
+}
+
+
+/* boxes */
+/* Hero Section */
+#hero {
+    background-color: #5e9683; /* Soft sage green background */
+    color: #ffffff; /* White text */
+    text-align: center;
+    padding: 40px 20px;
+}
+
+#hero h1 {
+    font-size: 3.5em;
+    font-weight: bold;
+    margin: 0;
+}
+
+#hero p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+
+
+/* Plants Section */
+#plants-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+/* Heading for Plants */
+#plants-section h2 {
+    font-size: 3em;
+    color: #3b6e42; /* Medium green color */
+    margin-bottom: 20px;
+}
+
+/* Plants Container (Grid Layout for 3 Boxes per Row) */
+.plants-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px;
+    padding: 20px 0;
+    justify-items: center;
+    padding-left: 35px;
+}
+
+/* Styling for the anchor link around plant cards */
+.plant-link {
+    display: block;  /* Make anchor tag behave like a block-level element */
+    width: 100%;     /* Ensure it fills the container */
+    height: 100%;    /* Ensure it fills the container */
+    text-decoration: none;  /* Remove default underline on links */
+}
+
+/* Plant Cards */
+.plant-card {
+    width: 90%;
+    height: 360px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+/* Hover effect for plant box */
+.plant-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Plant name inside the plant card */
+.plant-name {
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background for the name */
+    color: #ffffff;
+    padding: 10px;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Mobile Styling */
+@media (max-width: 768px) {
+    .plants-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+        gap: 20px;
+    }
+
+    .plant-card {
+        width: 90%;
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .plants-container {
+        grid-template-columns: 1fr; /* 1 column for smaller screens */
+        gap: 20px;
+    }
+
+    .plant-card {
+        width: 90%;
+        height: 350px;
+    }
+}

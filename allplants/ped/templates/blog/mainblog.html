@@ -1,0 +1,181 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Blog Page</title>
+    <link rel="stylesheet" href="{% static 'css/mainblog.css' %}">
+    
+</head>
+<body>
+    <header>
+        <nav class="navbar second-navbar"> 
+            <ul>
+              <li><a href="{% url 'homee' %}">Home</a></li>
+              <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+              <li><a href="{% url 'outdoor' %}">Outdoor Plants</a></li>
+              <li><a href="{% url 'myplants' %}">My Plants</a></li>
+              <li><a href="{% url 'homereme' %}">Home Remedies</a></li>
+              <li><a href="{% url 'blogs' %}">Blogs</a></li>
+              <li><a href="{% url 'login' %}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Post Your Blog with US</h1>
+        
+        <!-- Create Blog Icon -->
+        <!-- <div class="create-blog-icon" id="createBlogIcon">
+            <img src="https://img.icons8.com/ios/452/create-new.png" alt="Create Blog Icon">
+            <span>Create Your Blog</span>
+        </div> -->
+
+        <!-- Link to create a blog
+        <a href="{% url 'createblog' %}" class="create-blog-icon">
+            <img src="https://img.icons8.com/ios/452/create-new.png" alt="Create Blog Icon">
+            <span>Create Your Blog</span>
+        </a> -->
+
+        <!-- Conditional Create Blog Icon -->
+        {% if user.is_authenticated %}
+        <a href="{% url 'createblog' %}" class="create-blog-icon">
+            <img src="https://img.icons8.com/ios/452/create-new.png" alt="Create Blog Icon">
+            <span>Create Your Blog</span>
+        </a>
+        {% else %}
+        <p style="text-align: center; margin-top: 20px;">
+            <a href="{% url 'login' %}" style="text-decoration: none; font-weight: bold;">
+                Log in to post your own blog 🌱
+            </a>
+        </p>
+        {% endif %}
+
+
+        <!-- post blogs section -->
+        <div id="blogPosts">
+            <h2>Latest Posts</h2>
+            {% for blog in blogs %}
+                <div class="blog-post" data-blog-id="{{ blog.id }}">
+                    <h3>{{ blog.title }}</h3><br>
+                    <p>{{ blog.content }}</p>
+        
+                    {% if blog.image %}
+                        <img src="{{ blog.image.url }}" alt="Blog Image" style="max-width: 100%; height: auto;"><br>
+                    {% endif %}
+        
+                    <p><em>Posted by {{ blog.author.username }} <br>
+                        on {{ blog.created_at|date:"M d, Y" }}</em></p>
+        
+                    {% if user.is_authenticated and blog.author == user %}
+                        <form action="{% url 'deleteblog' blog.id %}" method="post" style="margin-top: 10px;" onsubmit="return confirmDelete();">
+                            {% csrf_token %}
+                            <button type="submit" style="background-color: red; color: white; border: none; padding: 5px 10px; border-radius: 5px;">
+                                Delete
+                            </button>
+                        </form>
+                    {% endif %}  
+        
+                    <!-- 🔽 COMMENT SECTION 🔽 -->
+                    <div class="comment-section">
+                        <h4>Comments</h4>
+                        <ul>
+                            {% for comment in blog.comments.all %}
+                                <li>
+                                    {{ comment.author.username }}: {{ comment.content }}
+                                    <br><small>{{ comment.created_at|date:"M d, Y H:i" }}</small>
+                                </li>
+                            {% empty %}
+                                <li>No comments yet.</li>
+                            {% endfor %}
+                        </ul>
+        
+                        {% if user.is_authenticated %}
+                        <form action="{% url 'add_comment' blog.id %}" method="post" style="margin-top: 10px;">
+                            {% csrf_token %}
+                            <input type="text" name="comment" placeholder="Write a comment..." required>
+                            <button type="submit">Comment</button>
+                        </form>
+                        {% else %}
+                        <p><a href="{% url 'login' %}">Log in to comment</a></p>
+                        {% endif %}
+                    </div>
+                    <!-- 🔼 COMMENT SECTION END 🔼 -->
+                </div>
+            {% empty %}
+                <p>No blog posts available yet.</p>
+            {% endfor %}
+        </div>
+        
+
+
+        <!-- <div id="blogPosts">
+            <h2>Latest Posts</h2>
+            {% for blog in blogs %}
+                <div class="blog-post" data-blog-id="{{ blog.id }}">
+                    <h3>{{ blog.title }}</h3><br>
+                    <p>{{ blog.content }}</p>
+
+                    {% if blog.image %}
+                        <img src="{{ blog.image.url }}" alt="Blog Image" style="max-width: 100%; height: auto;"><br>
+                    {% endif %}
+
+                    <p><em>Posted by {{ blog.author.username }} <br>
+                        on {{ blog.created_at|date:"M d, Y" }}</em></p>
+
+                        {% if user.is_authenticated and blog.author == user %}
+                        <form action="{% url 'deleteblog' blog.id %}" method="post" style="margin-top: 10px;" onsubmit="return confirmDelete();">
+                            {% csrf_token %}
+                            <button type="submit" style="background-color: red; color: white; border: none; padding: 5px 10px; border-radius: 5px;">
+                                Delete
+                            </button>
+                        </form>
+                    {% endif %}  
+                    
+                    
+                    <div class="comment-section"></div>
+                </div>
+            {% empty %}
+                <p>No blog posts available yet.</p>
+            {% endfor %}
+         -->
+
+            <!-- {% for blog in blogs %}
+                <div class="blog-post">
+                    <h3>{{ blog.title }}</h3><br>
+                    <p>{{ blog.content }}</p>
+                    
+                    {% if blog.image %}
+                        <img src="{{ blog.image.url }}" alt="Blog Image" style="max-width: 100%; height: auto;"><br>
+                    {% endif %}
+                    
+                    <p><em>Posted by {{ blog.author.username }} <br>
+                        on {{ blog.created_at|date:"M d, Y" }}</em></p>
+                </div>
+            {% empty %}
+                <p>No blog posts available yet.</p>
+            {% endfor %} -->
+        <!-- </div> -->
+        
+        <!-- <div id="blogPosts">
+            <h2>Latest Posts</h2>
+            {% for blog in blogs %}
+                <div class="blog-post">
+                    <h3>{{ blog.title }}</h3>
+                    <p>{{ blog.content }}</p>
+                    {% if blog.image %}
+                        <img src="{{ blog.image.url }}" alt="Blog Image">
+                    {% endif %}
+                    <p><em>Posted by {{ blog.author.first_name }} on {{ blog.created_at|date:"M d, Y" }}</em></p>
+                </div>
+            {% empty %}
+                <p>No blog posts available yet.</p>
+            {% endfor %}
+        </div> -->
+        
+    </div>
+
+    <script src="{% static 'js/mainblog.js' %}"></script>
+</body>
+</html>

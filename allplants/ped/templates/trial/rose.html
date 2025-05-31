@@ -1,0 +1,166 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow a Healthy Rose Plant</title>
+    <link rel="stylesheet" href="{% static 'css/styletrial.css' %}">
+
+</head>
+<body>
+    <header>
+        <h1>How to Grow a Healthy Rose Plant</h1>
+    </header>
+
+    <div class="gallery">
+        <div class="thumbnails">
+            <img src="{% static 'images/r1.jpg' %}">
+            <img src="{% static 'images/r2.avif' %}">
+            <img src="{% static 'images/r3.avif' %}">
+            <img src="{% static 'images/r4.jpeg' %}">
+        </div>
+    
+        <div class="main-image">
+            <img id="displayedImage" src="{% static 'images/r5.jpg' %}">
+        
+    
+    <!-- Temperature & water --> 
+        <div class="status-box"> 
+            <div class="icon temp-icon"> </div> 
+            <div class="status-text"> 
+                <p>Temperature</p> 
+                <h3 class="glow-text">15°C to 28°C</h3> 
+            </div> 
+        </div> 
+
+        <div class="status-box"> 
+            <div class="icon water-icon"></div> 
+            <div class="status-text"> 
+                <p>Water</p> 
+                <h3 class="glow-text2">2–3 times/week</h3> 
+            </div> 
+        </div> 
+    </div>
+
+
+
+    <section class="content">
+    
+        <h2> Planting Steps</h2>
+        <ol>
+            <li>Dig a hole about 12–18 inches deep.</li>
+            <li>Prepare soil by mixing compost and fertilizer.</li>
+            <li>Place the rose plant and cover roots with soil.</li>
+            <li>Water well and add mulch.</li>
+        </ol>
+
+        <h2>1. Choose the Right Rose Variety</h2>
+        <ul>
+            <li>Select a rose variety that suits your climate and garden conditions.</li>
+            <li>Popular choices: Hybrid Tea, Floribunda, Grandiflora, Climbing Roses.</li>
+        </ul>
+        
+        <div class="dropdown">
+            <button onclick="toggleDropdown('soil')">2. Best Soil for Growing Roses</button>
+            <div class="dropdown-content" id="soil">
+                <ul>
+                    <li><strong>Type:</strong> Well-draining, loamy soil is best.</li>
+                    <li><strong>pH Level:</strong> Slightly acidic (6.0 - 6.5).</li>
+                    <li><strong>Preparation:</strong> Mix organic compost, aged manure, and sand.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button onclick="toggleDropdown('water')">3. Water Requirements</button>
+            <div class="dropdown-content" id="water">
+                <ul>
+                    <li>Deep watering (about 1–2 inches per week).</li>
+                    <li>Water early in the morning to prevent fungal diseases.</li>
+                    <li>During hot summers, increase watering frequency.</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="dropdown">
+            <button onclick="toggleDropdown('fertilizer')">4. Fertilizers for Healthy Roses</button>
+            <div class="dropdown-content" id="fertilizer">
+                <ul>
+                    <li><strong>Organic Options:</strong> Compost, Aged manure, Bone meal, Fish emulsion.</li>
+                    <li><strong>Chemical Fertilizers:</strong> NPK 10-10-10 for overall growth.</li>
+                    <li>Apply fertilizer every 3–4 weeks during the growing season.</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="dropdown">
+            <button onclick="toggleDropdown('location')">5. Best Location for Growing Roses</button>
+            <div class="dropdown-content" id="location">
+                <ul>
+                    <li>Full sunlight (at least 6–8 hours daily).</li>
+                    <li>Good air circulation to prevent fungal infections.</li>
+                    <li>Avoid areas with strong winds or heavy shade.</li>
+                </ul>
+            </div>
+        </div>
+    
+
+    </div>
+
+        <h2 id="tips">Final Tips</h2>
+        <p id="tipse">Regularly remove spent flowers to promote more blooms. Maintain proper spacing (2–3 feet apart) for airflow. Enjoy the beauty of your healthy rose plant!</p>
+    </section>
+
+    
+    <h2 id="tips">Rose Plant Care Tips</h2>
+    <ul id="t">
+        <li><strong>Pruning:</strong> Trim weak or dead branches in late winter or early spring.</li>
+        <li><strong>Pest Control:</strong> Use neem oil spray to avoid aphids and mites.</li>
+        <li><strong>Disease Prevention:</strong> Apply fungicides to protect from black spot and mildew.</li>
+    </ul>
+
+
+
+    <script>
+        function toggleDropdown(id) {
+            var content = document.getElementById(id);
+            content.style.display = (content.style.display === "block") ? "none" : "block";
+        }
+
+        function savePlant(plantPage) {
+    fetch('/save-plant/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCSRFToken()
+        },
+        body: `plant_name=Rose&plant_page=${plantPage}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert("🌿 Rose saved to your garden!");
+        } else {
+            alert("⚠️ Failed to save the plant.");
+        }
+    });
+}
+
+function getCSRFToken() {
+    let cookie = document.cookie.split('; ').find(row => row.startsWith('csrftoken'));
+    return cookie ? cookie.split('=')[1] : '';
+}
+    </script>
+
+
+
+<!-- plants images part --------------------------   -->
+
+
+    <footer>
+        <button onclick="savePlant('rose')" id="plantnow">Plant Now</button>
+    </footer>
+    
+</body>
+</html>

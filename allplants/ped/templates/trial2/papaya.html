@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papaya plant</title>
+    <link rel="stylesheet" href="{% static 'css/trop.css' %}">
+    <style>
+      body::after {
+        content: '';
+        position: fixed;
+        top: 60%;
+        transform: translateY(-50%);
+        width: 100%;
+        height: 2000px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.1;
+        z-index: -1;
+        pointer-events: none;
+        background-image: url('{% static "images/papaya4.webp" %}');
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar second-navbar">
+            <ul class="sidebar">
+                <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#000"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></a></li>
+                <li><a href="{% url 'homee' %}">HOME</a></li>
+                <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+                <li><a href="{% url 'outdoor' %}">Outdoor Plant</a></li>
+                <li><a href="{% url 'homereme' %}">Home Remedies</a></li>
+                <li><a href="{% url 'myplants' %}">Go to My Plants</a></li>
+                <li><a href="{% url 'blogs' %}">BLOGS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <header id="title">
+        Papaya Plant 🍈
+    </header>
+
+    <section>
+        <h3>Images & Descriptions</h3>
+        <div class="image-gallery">
+            <div class="image-card">
+                <img src="{% static 'images/papaya1.webp' %}" alt="Papaya Plant">
+                <p>A young papaya plant basking in tropical sunlight, with its broad, lobed leaves fanned out like nature’s own umbrellas.</p>
+            </div>
+            <div class="image-card">
+                <img src="{% static 'images/papaya2.jpg' %}" alt="Papaya Tree">
+                <p>The papaya tree stands tall with a smooth green trunk, bearing clusters of green fruits slowly ripening under the sun’s warmth.</p>
+            </div>
+            <div class="image-card">
+                <img src="{% static 'images/papaya3.jpg' %}" alt="Ripe Papaya">
+                <p>Close-up of a ripe papaya glowing golden-orange on the tree — soft, juicy, and packed with nutrients straight from nature’s bounty.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+  <h3>Steps to Grow Papaya Plant Outdoors</h3>
+  <ol>
+    <li><strong>Find a Sunny, Warm Location:</strong><br>Papaya plants love full sun and warmth!</li>
+    <li><strong>Get Healthy Seeds or Seedlings:</strong><br>Use seeds from ripe papaya or purchase seedlings.</li>
+    <li><strong>Start in Well-Drained Soil:</strong><br>Light soil with good drainage and added compost is best.</li>
+    <li><strong>Plant with Space to Grow:</strong><br>Space at least 6 feet apart.</li>
+    <li><strong>Water Regularly but Don’t Overdo It:</strong><br>Moist but not soggy soil is key.</li>
+    <li><strong>Mulch Around the Base:</strong><br>Use dry grass or leaves to retain moisture and reduce weeds.</li>
+    <li><strong>Fertilize Monthly:</strong><br>Choose a nitrogen- and potassium-rich fertilizer to support healthy growth and fruiting.</li>
+    <li><strong>Support During Windy Days:</strong><br>Stake your plants if necessary to prevent damage.</li>
+    <li><strong>Watch for Flowers & Fruits:</strong><br>Expect fruiting within 4–6 months under proper conditions.</li>
+    <li><strong>Harvest Gently:</strong><br>Fruits bruise easily — handle them with care when picking.</li>
+  </ol>
+</section>
+
+
+    <section>
+        <h3>Fun Facts About Papaya Plants 🍈</h3>
+        <div class="fun-facts">
+            <ul>
+                <li><strong>Not a Tree!</strong> 🌿 Papayas grow on tall herbs, not woody trees.</li>
+                <li><strong>Fruit All Year:</strong> 📆 Can bear fruit year-round in tropical zones.</li>
+                <li><strong>Digestive Hero:</strong> 💪 Papain enzyme helps break down protein.</li>
+                <li><strong>Low-Maintenance:</strong> 🌴 Once settled, they’re easy to care for.</li>
+                <li><strong>Seeds Have Power:</strong> ⚫ Edible seeds offer detox benefits.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section>
+        <h3>FAQs</h3>
+        <div class="faq-item">
+            <div class="faq-question">🌱 When will my papaya tree start giving fruit?</div>
+            <div class="faq-answer">Usually within 6 to 12 months if grown in warm, sunny conditions.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">☀️ How much sunlight does a papaya plant need?</div>
+            <div class="faq-answer">At least 6–8 hours of direct sunlight daily.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">💧 What's the ideal watering schedule for papaya?</div>
+            <div class="faq-answer">Water 2–3 times a week, keeping the soil moist but not soggy.</div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach((question) => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+
+        // for bookmark
+    function savePlant(plantPage) {
+    fetch('/save-plant/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCSRFToken()
+        },
+        body: `plant_name=Papaya&plant_page=${plantPage}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert("🌿 Papaya saved to your garden!");
+        } else {
+            alert("⚠️ Failed to save the plant.");
+        }
+    });
+}
+
+function getCSRFToken() {
+    let cookie = document.cookie.split('; ').find(row => row.startsWith('csrftoken'));
+    return cookie ? cookie.split('=')[1] : '';
+}
+    </script>
+
+    <footer>
+        <p>Ready to grow your own Papaya plant? 🌿</p>
+        <button onclick="savePlant('papaya.html')"> 🌴 Plant Now</button>
+    </footer>
+
+</body>
+</html>

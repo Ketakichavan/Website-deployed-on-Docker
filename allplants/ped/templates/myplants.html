@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌿 Your Saved Plants</title>
+    <link rel="stylesheet" href="{% static 'css/myplant.css' %}">
+</head>
+<body>
+
+<header>
+    <nav class="navbar second-navbar">
+        <ul>
+            <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+            <li><a href="{% url 'outdoor' %}">Outdoor Plants</a></li>
+            <li><a href="{% url 'myplants' %}">My Plants</a></li>
+            <li><a href="{% url 'blogs' %}">Blogs</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <h1>🌿 Your Saved Plants</h1>
+
+    <!-- {% if user.is_authenticated %}
+        {% if saved_plants %}
+            <div class="plant-container">
+                {% for plant in saved_plants %}
+                    <a href="/{{ plant.plant_page|cut:'.html' }}/">
+                        <div class="plant" style="background-image: url('{% static 'images/' %}{{ plant.plant_name }}.jpg');">
+                            <div class="plant-name">{{ plant.plant_name }}</div>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>You haven't saved any plants yet. Start saving your favorite plants! 🌱</p>
+        {% endif %}
+    {% else %}
+        <p><strong>🔐 Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">register</a> to view and save your favorite plants.</strong></p>
+    {% endif %} -->
+
+    {% load static %}
+    {% if user.is_authenticated %}
+        {% if saved_plants %}
+            <div class="plant-container">
+                {% for plant in saved_plants %}
+                    <a href="/{{ plant.plant_page|cut:'.html' }}/">
+                        {% with 'images/'|add:plant.plant_name|lower|add:'.jpg' as image_path %}
+                            <div class="plant" style="background-image: url('{% static image_path %}');">
+                                <div class="plant-name">{{ plant.plant_name }}</div>
+                            </div>
+                        {% endwith %}
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>You haven't saved any plants yet. Start saving your favorite plants! 🌱</p>
+        {% endif %}
+    {% else %}
+        <p><strong>🔐 Please <a href="{% url 'login' %}">log in</a> or <a href="{% url 'register' %}">register</a> to view and save your favorite plants.</strong></p>
+    {% endif %}
+
+
+    <hr>
+</main>
+
+</body>
+</html>

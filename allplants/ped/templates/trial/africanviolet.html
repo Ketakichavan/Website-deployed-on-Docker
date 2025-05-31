@@ -1,0 +1,156 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow a Healthy African Violet Plant</title>
+    <link rel="stylesheet" href="{% static 'css/styletrial.css' %}">
+
+</head>
+<body>
+    <header id = "header4">
+        <h1>How to Grow a Healthy African Violet Plant</h1>
+    </header>
+
+    <div class="gallery4">
+        <div class="thumbnails">
+            <img src="{% static 'images/av1.jpg' %}" >
+            <img src="{% static 'images/av2.jpg' %}" >
+            <img src="{% static 'images/av3.jpg' %}" >
+            <img src="{% static 'images/av4.webp' %}" >
+        </div>
+
+        <div class="main-image">
+            <img id="displayedImage" src="{% static 'images/av5.jpg' %}">
+        
+        <!-- Temperature & water --> 
+        <div class="status-box"> 
+            <div class="icon temp-icon"> </div> 
+            <div class="status-text"> 
+                <p>Temperature</p> 
+                <h3 class="glow-text">18°C to 24°C</h3> 
+            </div> 
+        </div> 
+
+        <div class="status-box"> 
+            <div class="icon water-icon"></div> 
+            <div class="status-text"> 
+                <p>Water</p> 
+                <h3 class="glow-text2">1 times/week</h3> 
+            </div> 
+        </div> 
+    </div>
+
+    <section class="content">
+    
+        <h2 id = "mainhead4"> Planting Steps</h2>
+        <ol>
+            <li>Choose a small pot with drainage holes.</li>
+            <li>Fill with light, airy African violet potting mix.</li>
+            <li>Place the plant so roots are just covered with soil.</li>
+            <li>Water from the bottom and place in indirect light.</li>
+        </ol>
+
+        <h2 id = "mainhead4">1. Choose the Right African Violet Variety</h2>
+        <ul>
+            <li>Common types: Standard, Miniature, Trailer, and Chimera.</li>
+            <li>Select based on flower color, leaf shape, and growth habit.</li>
+        </ul>
+        
+        <div class="dropdown">
+            <button onclick="toggleDropdown('soil')">2. Best Soil for Growing African Violets</button>
+            <div class="dropdown-content" id="soil">
+                <ul>
+                    <li><strong>Type:</strong> Light, well-aerated, and slightly moist soil.</li>
+                    <li><strong>pH Level:</strong> Slightly acidic (6.0–6.5).</li>
+                    <li><strong>Preparation:</strong> Use a mix of peat moss, perlite, and vermiculite.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button onclick="toggleDropdown('water')">3. Water Requirements</button>
+            <div class="dropdown-content" id="water">
+                <ul>
+                    <li>Water when the top inch of soil feels dry.</li>
+                    <li>Use room temperature water, avoid wetting the leaves.</li>
+                    <li>Bottom watering is preferred to prevent leaf spots.</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="dropdown">
+            <button onclick="toggleDropdown('fertilizer')">4. Fertilizers for Healthy African Violets</button>
+            <div class="dropdown-content" id="fertilizer">
+                <ul>
+                    <li><strong>Organic Options:</strong> Fish emulsion, compost tea in small amounts.</li>
+                    <li><strong>Chemical Fertilizers:</strong> Use a balanced, water-soluble fertilizer (e.g., 14-12-14).</li>
+                    <li>Fertilize every 2–4 weeks during active growth.</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="dropdown">
+            <button onclick="toggleDropdown('location')">5. Best Location for Growing African Violets</button>
+            <div class="dropdown-content" id="location">
+                <ul>
+                    <li>Bright, indirect light—avoid direct sunlight.</li>
+                    <li>Ideal indoor temperatures: 65–75°F (18–24°C).</li>
+                    <li>Keep away from drafts and heating vents.</li>
+                </ul>
+            </div>
+        </div>
+    
+
+    </div>
+
+        <h2 id="tips4">Final Tips</h2>
+        <p id="tipse4">Remove faded blooms and damaged leaves to encourage new growth. Turn the pot weekly for even light exposure. Use self-watering pots or trays to maintain consistent moisture.</p>
+    </section>
+
+    
+    <h2 id="tips4">African Violet Plant Care Tips</h2>
+    <ul id="t4">
+        <li><strong>Pruning:</strong> Pinch off old leaves and dead flowers to promote healthy growth.</li>
+        <li><strong>Pest Control:</strong> Check for mealybugs and thrips; treat with insecticidal soap.</li>
+        <li><strong>Disease Prevention:</strong> Avoid water on leaves and provide air circulation to prevent root rot and powdery mildew.</li>
+    </ul>
+
+    <script>
+        function toggleDropdown(id) {
+            var content = document.getElementById(id);
+            content.style.display = (content.style.display === "block") ? "none" : "block";
+        }
+
+        function savePlant(plantPage) {
+    fetch('/save-plant/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCSRFToken()
+        },
+        body: `plant_name=Africanviolet&plant_page=${plantPage}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert("🌿 African Violet saved to your garden!");
+        } else {
+            alert("⚠️ Failed to save the plant.");
+        }
+    });
+}
+
+function getCSRFToken() {
+    let cookie = document.cookie.split('; ').find(row => row.startsWith('csrftoken'));
+    return cookie ? cookie.split('=')[1] : '';
+}
+    </script>
+
+    <footer id = "footer4">
+        <button onclick="savePlant('africanviolet')" id="plantnow"> Plant now</button>
+    </footer>
+</body>
+</html>

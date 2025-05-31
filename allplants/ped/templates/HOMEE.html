@@ -1,0 +1,208 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLORESTA</title>
+    <!-- Link to Font Awesome CDN for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/HOMEE.css' %}">
+</head>
+
+<body>
+    <!-- code for displaying pop-up message of login successful -->
+    {% if messages %}
+    <div id="popup-message-wrapper">
+        {% for message in messages %}
+        <div class="popup-flower">
+            <div class="popup-text">
+                {{ message }}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- Animated Heading -->
+    <div class="container">
+        <h1>A world of green.</h1>
+        <h1>FLORESTA.</h1>
+    </div>
+
+    <!-- Second Navbar -->
+    <header>
+        <nav class="navbar second-navbar">
+            <ul>
+                <li><a href="{% url 'homee' %}">Home</a></li>
+                <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+                <li><a href="{% url 'outdoor' %}">Outdoor Plants</a></li>
+                <li><a href="{% url 'homereme' %}">Home Remedies</a></li>
+                <li><a href="{% url 'myplants' %}">My Plants</a></li>
+                <li><a href="{% url 'blogs' %}">Blogs</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+
+                {% if user.is_authenticated %}
+                    <li class="user-dropdown">
+                        <img src="{% static 'images/profile.png' %}" class="user-icon" onclick="toggleDropdown()" alt="User">
+                        <div id="dropdownMenu" class="dropdown-content">
+                            <p class="username">Hi, {{ user.username }}!</p>
+                            <a href="{% url 'login' %}">Logout</a>
+                            <!-- <a href="{% url 'logout' %}">Logout</a> -->
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <!-- <header>
+        <nav id="services" class="navbar second-navbar">
+            <nav>
+                <ul>
+                    <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+                    <li><a href="{% url 'outdoor' %}">Outdoor Plants</a></li>
+                    <li><a href="{% url 'myplants' %}">My Plants</a></li>
+                    <li><a href="{% url 'homereme' %}">Home Remedies</a></li>
+                    <li><a href="{% url 'blogs' %}">Blogs</a></li>
+                    <li><a href="{% url 'login' %}">Login</a></li>
+
+                    {% if user.is_authenticated %}
+                    <li class="user-dropdown">
+                        <img src="{% static 'images/profile.png' %}" class="user-icon" onclick="toggleDropdown()" alt="User">
+                        <div id="dropdownMenu" class="dropdown-content">
+                            <p class="username">Hi, {{ user.username }}!</p>
+                            <a href="{% url 'logout' %}">Logout</a>
+                        </div>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </nav>
+    </header> -->
+
+    <div class="slideshow-container">
+        <div class="mySlides">
+            <img src="{% static 'images/a1.jpg' %}" alt="Test Image">
+        </div>
+
+        <div class="mySlides">
+            <img src="{% static 'images/a2.jpg' %}" alt="Slide 2">
+        </div>
+
+        <div class="mySlides">
+            <img src="{% static 'images/a3.jpg' %}" alt="Slide 3">
+        </div>
+
+        <div class="mySlides">
+            <img src="{% static 'images/a4.jpg' %}" alt="Slide 4">
+        </div>
+
+        <div class="mySlides">
+            <img src="{% static 'images/a5.jpg' %}" alt="Slide 5">
+        </div>
+    </div>
+
+    <br>
+
+    <div style="text-align:center">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+    <section id="about" class="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="{% static 'images/about.avif' %}" alt="About us">
+            </div>
+            <div class="about-content">
+                <h2>About Us</h2>
+                <p>
+                    We are a team of passionate professionals dedicated to delivering high-quality solutions.
+                    Our mission is to innovate and provide outstanding services to our clients.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2>FLORESTA</h2>
+            </div>
+
+            <ul class="footer-links">
+                <li><a href="{% url 'homee' %}">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+            </ul>
+
+            <div class="footer-social">
+                <a href="https://www.instagram.com/shrushtishrivastav04/"><img src="images/instagram-icon.webp" alt="Instagram"></a>
+                <a href="https://www.linkedin.com/in/shrushti-shrivastav-227a1b289/"><img src="images/linkedin-icon.webp" alt="LinkedIn"></a>
+                <a href="#"><img src="images/facebook-icon.webp" alt="Facebook"></a>
+            </div>
+        </div>
+
+        <p class="footer-copy">© 2024 FLORESTA. All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'js/HOMEE.js' %}"></script>
+
+    <script>
+        // Hide the popup message after 3 seconds
+        setTimeout(function () {
+            const popup = document.getElementById('popup-message-wrapper');
+            if (popup) {
+                popup.style.display = 'none';
+            }
+        }, 3000);
+
+        // Dropdown for user profile
+        function toggleDropdown() {
+            const menu = document.getElementById("dropdownMenu");
+
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                document.querySelectorAll('.dropdown-content').forEach(el => el.style.display = 'none');
+                menu.style.display = "block";
+            }
+        }
+
+        window.addEventListener('click', function (e) {
+            const userDropdown = document.querySelector('.user-dropdown');
+            const dropdownMenu = document.getElementById('dropdownMenu');
+
+            // If click is outside the dropdown, close it
+            if (!userDropdown.contains(e.target)) {
+                dropdownMenu.style.display = 'none';
+            }
+        });
+
+        // Slideshow functionality
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            const slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }    
+            slides[slideIndex - 1].style.display = "block";  
+            setTimeout(showSlides, 4000); // Change image every 4 seconds
+        }
+
+    
+    </script>
+
+
+</body>
+
+</html>

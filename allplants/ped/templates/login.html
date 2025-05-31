@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    
+</head>
+<body>
+    
+
+    <div class="wrapper">               <!-- the main div -->
+        <form action="" method="post">                <!-- form begins -->
+            <h1>Login</h1>
+
+            {% if error %}
+                <p id="error-message" class="error-message">{{ error }}</p>
+            {% endif %}
+
+        
+
+            
+            {% csrf_token %}
+
+            <div class="input-box">
+                <input type="text" placeholder="Username" id="username" name="username">
+                <i class='bx bx-user' ></i>                <!-- code for icons -->
+            </div>
+           
+           
+            <div class="input-box">
+                <input type="password" placeholder="Password" id="password" name="pass">
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+
+            <div class="remember">
+                <label><input type="checkbox">Remember me</label>
+                <a href="#">Forgot Password?</a>
+            </div>
+
+
+            <button type="submit" class="login_btn">Login</button>
+
+
+            <div class="register-link">
+                <p>Don't have an account? <a href="{% url 'register' %}">Register Now</a>
+                </p>
+            </div>
+
+
+        </form>
+
+    </div>
+
+    <script>
+        // Wait for the DOM to load
+        document.addEventListener('DOMContentLoaded', function () {
+            const errorMsg = document.getElementById('error-message');
+            if (errorMsg) {
+                setTimeout(() => {
+                    errorMsg.style.display = 'none';
+                }, 8000); // 8000ms = 8 seconds
+            }
+        });
+    </script>
+    
+
+
+</body>
+</html>

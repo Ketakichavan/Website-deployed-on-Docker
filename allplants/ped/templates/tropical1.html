@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Attractive Grid Layout</title>
+  <link rel="stylesheet" href="{% static 'css/tropical1.css' %}">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar second-navbar">
+          <ul>
+            <li><a href="{% url 'homee' %}">Home</a></li>
+            <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+            <li><a href="{% url 'outdoor' %}">Outdoor Plants</a></li>
+            <li><a href="{% url 'myplants' %}">My Plants</a></li>
+            <li><a href="{% url 'homereme' %}">Home Remedies</a></li>
+            <li><a href="{% url 'blogs' %}">Blogs</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+          </ul>
+        </nav>
+    </header>
+    <!-- <br><br> -->
+
+    <div class="wrapper">
+        <div class="main-container">
+            <h1 class="title">Tropical Plant Collection</h1><br><br>
+            
+            <div class="grid-container">
+
+                <div class="square-box">
+                  <!-- <a href="rose.html" style="text-decoration: none; color: inherit;"> -->
+                    <a href="{% url 'rose' %}">
+                    <div class="polaroid-frame">
+                      <img src="{% static 'images/rose.jpg' %}" alt="Plant Image" />
+                      <div class="caption">Rose Plant</div>
+                    </div>
+                  </a> 
+                </div>
+
+                <div class="square-box">
+                    <!-- <a href="peacelily.html" style="text-decoration: none; color: inherit;"> -->
+                      <a href="{% url 'peacelily' %}">
+                      <div class="polaroid-frame">
+                        <img src="{% static 'images/peacelily.jpg' %}" alt="Plant Image" />
+                        <div class="caption">Peace Lily</div>
+                      </div>
+                    </a> 
+                  </div>
+
+                  <div class="square-box">
+                    <!-- <a href="chineseever.html" style="text-decoration: none; color: inherit;"> -->
+                      <a href="{% url 'chineseever' %}">
+                      <div class="polaroid-frame">
+                        <img src="{% static 'images/chineseever.jpg' %}" alt="Plant Image" />
+                        <div class="caption">Chinese Evergreen</div>
+                      </div>
+                    </a> 
+                  </div>
+
+                  <div class="square-box">
+                    <!-- <a href="strawberry.html" style="text-decoration: none; color: inherit;"> -->
+                      <a href="{% url 'strawberry' %}">
+                      <div class="polaroid-frame">
+                        <img src="{% static 'images/strawberry.jpg' %}" alt="Plant Image" />
+                        <div class="caption">Strawberry</div>
+                      </div>
+                    </a> 
+                  </div>
+
+                  <div class="square-box">
+                    <!-- <a href="africanviolet.html" style="text-decoration: none; color: inherit;"> -->
+                      <a href="{% url 'africanviolet' %}">
+                      <div class="polaroid-frame">
+                        <img src="{% static 'images/africanviolet.jpg' %}" alt="Plant Image" />
+                        <div class="caption">African Violet</div>
+                      </div>
+                    </a> 
+                  </div>
+
+                  <div class="square-box">
+                    <!-- <a href="cherrytomato.html" style="text-decoration: none; color: inherit;"> -->
+                      <a href="{% url 'cherrytomato' %}">
+                      <div class="polaroid-frame">
+                        <img src="{% static 'images/cherrytomato.jpg' %}" alt="Plant Image" />
+                        <div class="caption">Cherry Tomatoes</div>
+                      </div>
+                    </a> 
+                  </div>
+
+                  <div class="square-box">
+                    <!-- <a href="hydrangaes.html" style="text-decoration: none; color: inherit;"> -->
+                      <a href="{% url 'hydrangeas' %}">
+                      <div class="polaroid-frame">
+                        <img src="{% static 'images/hydrangaes.jpg' %}" alt="Plant Image" />
+                        <div class="caption">Hydrangeas</div>
+                      </div>
+                    </a> 
+                  </div>
+
+                  <div class="square-box">
+                    <!-- <a href="periwinkle.html" style="text-decoration: none; color: inherit;"> -->
+                      <a href="{% url 'periwinkle' %}">
+                      <div class="polaroid-frame">
+                        <img src="{% static 'images/periwinkle.jpg' %}" alt="Plant Image" />
+                        <div class="caption">Periwinkle</div>
+                      </div>
+                    </a> 
+                  </div>
+                
+
+            </div>
+              
+        </div>
+    </div>
+    
+
+</body>
+</html>
+
+

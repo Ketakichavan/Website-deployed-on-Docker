@@ -1,0 +1,344 @@
+/* -----------------------------------------General Page Layout ----------------------------------------- */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eaf4e9; /* Light green background */
+    color: #333;
+}
+
+/* -----------------------------------------NAVBAR -----------------------------------------*/
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+}
+/* Second Navbar */
+.second-navbar{
+    font-size: 1rem;
+    background-color: #80ab94;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 550;
+    height: 60px;
+}
+
+.sidebar {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+}
+
+
+nav ul{
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav li{
+    height: 30px;
+}
+
+nav a{
+    height: 100%;
+    padding: 0 30px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+
+nav a:hover{
+    background-color: #4E635E;
+}
+
+
+.sidebar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 999;
+    background-color:rgb(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: -10px 0 10px rgba(0,0,0,0.1);
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.sidebar li{
+    width: 100%;
+}
+
+.sidebar a{
+    width: 100%;
+    font-family: 'Cursive', 'Brush Script Mt', sans-serif;
+    font-size: large;
+}
+
+.menu-button{
+    display: none;
+}
+
+@media(max-width:900px){
+    .hideOnMobile{
+        display: none;
+    }
+    .menu-button{
+        display: block;
+    }
+}
+@media(max-width:400px){
+    .sidebar{
+        width: 100%;
+    }
+}
+
+
+
+
+
+/* ----------------------------------------- tropical.html page styling --------------------------------------*/
+
+
+h2 {
+    color: #2d6a4f;
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+/* Outdoor Plants Section */
+#outdoor-plants {
+    background-color: #fff;
+    padding: 50px 20px;
+    margin: 30px auto;
+    width: 80%;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#outdoor-plants p {
+    font-size: 1.5em;
+    color: #5b8c64;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* Plant Grid Layout (3 Columns Per Row) */
+.plant-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* EXACTLY 3 columns per row */
+    gap: 25px; /* Space between boxes */
+    max-width: 1500px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+/* Remove default link styling */
+a {
+    text-decoration: none;
+    color: inherit;
+    display: block; /* Ensures the link takes up the full space of the .plant div */
+}
+
+/* Plant Cards */
+.plant {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 270px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    overflow: hidden; /* Prevents overflow when scaling */
+}
+
+/* Hover Effect Without Overlap */
+.plant:hover {
+    transform: scale(1.05); /* Slight increase */
+    z-index: 10; /* Brings the hovered element to the front */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Plant name container */
+.plant-name {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 10px;
+    font-size: 1.3em;
+    border-radius: 12px;
+    text-align: center;
+    box-sizing: border-box;
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .plant-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 500px) {
+    .plant-container {
+        grid-template-columns: repeat(1, 1fr); /* 1 column on very small screens */
+    }
+}
+
+
+
+
+
+/* ------------------------------different tropical plants styling ------------------------------*/
+/*              banana.html , coconut.html , hibiscus.html etc                 */
+#title{
+    background-color: #00674f;
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+    font-size: 2em;
+}
+section {
+    padding: 30px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.image-gallery {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+  
+.image-card {
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 300px;
+    text-align: center;
+}
+  
+.image-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+  
+.image-card p {
+    padding: 15px;
+    font-size: 0.95em;
+    color: #333;
+}
+  
+/* 🌟 Hover effect */
+.image-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+}
+h3 {
+    color: #0e543a;
+    margin-top: 40px;
+    font-size: 2em;
+}
+ol {
+    background: #fff;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+li {
+  font-size: 1.1em; /* smaller than your current 1.3em */
+}
+
+li strong {
+  font-size: 1.3em; /* keep strong text larger */
+}
+
+.faq-item {
+    margin-bottom: 15px;
+}
+.faq-question {
+    background: #b6ddb3;
+    padding: 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.faq-answer {
+    display: none;
+    padding: 10px 15px;
+    background: white;
+    border-left: 3px solid #0e543a;
+}
+
+.fun-facts {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    line-height: 1.8;
+    margin-top: 20px;
+}
+.fun-facts ul {
+    list-style-type: '🌱 ';
+    padding-left: 25px;
+}
+.fun-facts li {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+footer {
+    background-color: #e6f4e6;
+    padding: 20px 20px;
+    text-align: center;
+    margin-top: 10px;
+    border-top: 2px solid #97c05c;
+}
+  
+footer button {
+    background-color: #97c05c;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.5em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+footer p{
+    font-size: 1.5em;
+}
+  
+footer button:hover {
+    background-color: #7fa349;
+}
+
+

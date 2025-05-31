@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana Plant</title>
+    <link rel="stylesheet" href="{% static 'css/trop.css' %}">
+    <style>
+        body::before {
+            content: '';
+            position: fixed;
+            top: 30%;
+            transform: translateY(-50%);
+            width: 600px;
+            height: 800px;
+            background-image: url('{% static "images/banana-left.jpg" %}');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: left;
+            opacity: 0.08;
+            z-index: -1;
+            pointer-events: none;
+            left: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 55%;
+            transform: translateY(-50%);
+            width: 800px;
+            height: 1200px;
+            background-image: url('{% static "images/banana-right.avif" %}');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: right;
+            opacity: 0.08;
+            z-index: -1;
+            pointer-events: none;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar second-navbar">
+            <ul class="sidebar">
+                <li onclick="hideSidebar()">
+                    <a href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#000">
+                            <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li><a href="{% url 'homee' %}">HOME</a></li>
+                <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+                <li><a href="{% url 'outdoor' %}">Outdoor Plant</a></li>
+                <li><a href="{% url 'homereme' %}">Home Remedies</a></li>
+                <li><a href="{% url 'myplants' %}">Go to My Plants</a></li>
+                <li><a href="{% url 'blogs' %}">BLOGS</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <header id="title">
+        Banana Plant 🌴
+    </header>
+
+    <section>
+        <h3>Images & Descriptions</h3>
+        <div class="image-gallery">
+            <div class="image-card">
+                <img src="{% static 'images/banana1.webp' %}" alt="Banana Plant" />
+                <p>Young banana plant growing in a sunny tropical garden. Their large leaves absorb plenty of sunlight.</p>
+            </div>
+            <div class="image-card">
+                <img src="{% static 'images/banana2.webp' %}" alt="Banana bunch" />
+                <p>Mature banana bunches hanging from the plant, ready to be harvested.</p>
+            </div>
+            <div class="image-card">
+                <img src="{% static 'images/banana3.webp' %}" alt="Banana Flower" />
+                <p>The banana flower, also known as banana blossom, from which the fruit develops.</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+    <h3>Steps to Grow Banana Plant Outdoors</h3>
+    <ol>
+        <li><strong>Choose a Sunny Spot:</strong><br>Banana plants thrive in full sunlight. Make sure the location gets at least 6–8 hours of direct sun every day.</li>
+        <li><strong>Prepare Nutrient-Rich Soil:</strong><br>Use well-drained, loamy soil rich in organic matter. A pH level between 5.5 and 7.0 works best.</li>
+        <li><strong>Plant the Sucker or Rhizome:</strong><br>Dig a hole about 1.5 feet deep and wide. Place the banana sucker upright and cover it with soil, pressing gently to stabilize.</li>
+        <li><strong>Water Generously:</strong><br>Keep the soil consistently moist (but not waterlogged). During hot seasons, daily watering may be needed to prevent drying out.</li>
+        <li><strong>Feed Monthly:</strong><br>Apply compost or a balanced potassium-rich fertilizer once a month. Bananas are heavy feeders and need extra nutrients to grow well.</li>
+        <li><strong>Mulch Around the Base:</strong><br>Use dry leaves, wood chips, or grass clippings around the base to retain moisture and prevent weeds.</li>
+        <li><strong>Protect from Wind:</strong><br>Large banana leaves can tear in strong winds. Use barriers or plant in a less windy area to keep them safe.</li>
+        <li><strong>Look for Flowers:</strong><br>After about 6–8 months, a purple flower (banana blossom) will emerge. This means your plant is preparing to fruit!</li>
+        <li><strong>Wait for the Bananas:</strong><br>Small green bananas will appear and grow in clusters. They’ll take 2–3 months to ripen after flowering.</li>
+        <li><strong>Harvest Time:</strong><br>Cut the whole bunch when bananas are plump and just turning yellow. Let them ripen indoors for sweeter flavor!</li>
+    </ol>
+    </section>
+
+    <section>
+        <h3>Fun Facts About Banana Plants</h3>
+        <div class="fun-facts">
+            <ul>
+                <li><strong>Not a Tree!</strong> Banana plants are actually giant herbs — their "trunk" is made of tightly packed leaf stems.</li>
+                <li><strong>Fast Growers!</strong> Under the right conditions, banana plants can grow up to 6 inches a day.</li>
+                <li><strong>All Edible:</strong> The banana flower, leaves, and stem are all used in cooking in different parts of the world.</li>
+                <li><strong>World Favorite:</strong> Bananas are the most popular fruit globally and are grown in over 135 countries.</li>
+                <li><strong>Self-Multiplying:</strong> One banana plant can produce multiple suckers that grow into new plants — a built-in backup!</li>
+            </ul>
+        </div>
+    </section>
+
+
+    <section>
+        <h3>FAQs</h3>
+        <div class="faq-item">
+            <div class="faq-question">🌱 How long does a banana plant take to grow?</div>
+            <div class="faq-answer">Typically, it takes about 9 to 12 months for a banana plant to produce fruit after planting.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">🌞 Do banana plants need full sun?</div>
+            <div class="faq-answer">Yes, banana plants thrive in full sunlight and need at least 6-8 hours of sun per day.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">💧 How often should I water my banana plant?</div>
+            <div class="faq-answer">Keep the soil consistently moist, especially during hot weather. Water regularly but avoid waterlogging.</div>
+        </div>
+    </section>
+
+    
+
+    <script src="{% static 'js/saveplant.js' %}"></script>
+    <script>
+        // Toggle FAQ answers
+        document.querySelectorAll('.faq-question').forEach((question) => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+            });
+        });
+
+        
+        function savePlant(plantPage) {
+        fetch('/save-plant/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-CSRFToken': getCSRFToken()
+            },
+            body: `plant_name=Banana&plant_page=${plantPage}`
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                alert("🌿 Banana saved to your garden!");
+            } else {
+                alert("⚠️ Failed to save the plant.");
+            }
+        });
+    }
+
+    function getCSRFToken() {
+        let cookie = document.cookie.split('; ').find(row => row.startsWith('csrftoken'));
+        return cookie ? cookie.split('=')[1] : '';
+    }
+</script>
+<footer>
+    <p>Ready to grow your own banana plant? 🌿</p>
+    <button onclick="savePlant('banana.html')"> 🌴 Plant Now</button>
+</footer>
+</body>
+</html>

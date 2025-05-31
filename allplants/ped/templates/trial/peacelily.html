@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grow a Healthy Peace Lily Plant</title>
+    <link rel="stylesheet" href="{% static 'css/styletrial.css' %}">
+</head>
+<body>
+    <header id="header1">
+        <h1>How to Grow a Healthy Peace Lily Plant</h1>
+    </header>
+
+    <div class="gallery1">
+        <div class="thumbnails">
+            <img src="{% static 'images/p1.jpg' %}">
+            <img src="{% static 'images/p2.webp' %}">
+            <img src="{% static 'images/p3.webp' %}">
+            <img src="{% static 'images/p4.webp' %}">
+        </div>
+    
+        <div class="main-image">
+            <img id="displayedImage" src="{% static 'images/p5.jpg' %}">
+        
+        <!-- Temperature & water --> 
+        <div class="status-box"> 
+            <div class="icon temp-icon"> </div> 
+            <div class="status-text"> 
+                <p>Temperature</p> 
+                <h3 class="glow-text">15°C to 26°C</h3> 
+            </div> 
+        </div> 
+
+        <div class="status-box"> 
+            <div class="icon water-icon"></div> 
+            <div class="status-text"> 
+                <p>Water</p> 
+                <h3 class="glow-text2">1 times/week</h3> 
+            </div> 
+        </div> 
+    </div>
+
+    <section class="content">
+    
+        <h2 id="mainhead"> Planting Steps</h2>
+        <ol>
+            <li>Choose a pot with good drainage.</li>
+            <li>Fill with a peat-based potting mix.</li>
+            <li>Gently place the Peace Lily root ball in the center.</li>
+            <li>Water lightly and place in indirect light.</li>
+        </ol>
+
+        <h2 id="mainhead">1. Choose the Right Peace Lily Type</h2>
+        <ul>
+            <li>Common varieties: Mauna Loa, Domino, Sensation, Little Angel.</li>
+            <li>Choose based on your space and light conditions.</li>
+        </ul>
+        
+        <div class="dropdown">
+            <button onclick="toggleDropdown('soil')">2. Best Soil for Growing Peace Lily</button>
+            <div class="dropdown-content" id="soil">
+                <ul>
+                    <li><strong>Type:</strong> Light, well-aerated potting soil with peat moss.</li>
+                    <li><strong>pH Level:</strong> Slightly acidic (5.8–6.5).</li>
+                    <li><strong>Preparation:</strong> Add perlite or coarse sand to improve drainage.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button onclick="toggleDropdown('water')">3. Water Requirements</button>
+            <div class="dropdown-content" id="water">
+                <ul>
+                    <li>Water once the top inch of soil feels dry.</li>
+                    <li>Peace Lilies prefer consistently moist (not soggy) soil.</li>
+                    <li>Mist leaves in dry indoor environments.</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="dropdown">
+            <button onclick="toggleDropdown('fertilizer')">4. Fertilizers for Healthy Peace Lily</button>
+            <div class="dropdown-content" id="fertilizer">
+                <ul>
+                    <li><strong>Organic Options:</strong> Fish emulsion, compost tea, seaweed extract.</li>
+                    <li><strong>Chemical Fertilizers:</strong> Diluted houseplant fertilizer (20-20-20).</li>
+                    <li>Fertilize once a month during spring and summer.</li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="dropdown">
+            <button onclick="toggleDropdown('location')">5. Best Location for Growing Peace Lily</button>
+            <div class="dropdown-content" id="location">
+                <ul>
+                    <li>Bright, indirect light is ideal.</li>
+                    <li>Avoid direct sunlight which can scorch leaves.</li>
+                    <li>Suitable for indoor spaces like offices and bedrooms.</li>
+                </ul>
+            </div>
+        </div>
+    
+
+    </div>
+
+        <h2 id="tips1">Final Tips</h2>
+        <p id="tipse1">Wipe leaves with a damp cloth to keep them dust-free. Peace Lilies help purify indoor air. Repot every 1–2 years for healthy growth.</p>
+    </section>
+
+    
+    <h2 id="tips1">Peace Lily Plant Care Tips</h2>
+    <ul id="t1">
+        <li><strong>Pruning:</strong> Remove yellow or brown leaves to encourage new growth.</li>
+        <li><strong>Pest Control:</strong> Watch for mealybugs or spider mites; use neem oil if needed.</li>
+        <li><strong>Disease Prevention:</strong> Avoid overwatering to prevent root rot and leaf blight.</li>
+    </ul>
+
+    <script>
+        function toggleDropdown(id) {
+            var content = document.getElementById(id);
+            content.style.display = (content.style.display === "block") ? "none" : "block";
+        }
+
+        function savePlant(plantPage) {
+    fetch('/save-plant/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCSRFToken()
+        },
+        body: `plant_name=Peacelily&plant_page=${plantPage}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert("🌿 Peacelily saved to your garden!");
+        } else {
+            alert("⚠️ Failed to save the plant.");
+        }
+    });
+}
+
+function getCSRFToken() {
+    let cookie = document.cookie.split('; ').find(row => row.startsWith('csrftoken'));
+    return cookie ? cookie.split('=')[1] : '';
+}
+
+    </script>
+
+    <footer id = "footer1">
+        <button onclick="savePlant('peacelily')" id="plantnow"> Plant now</button>
+    </footer>
+</body>
+</html>

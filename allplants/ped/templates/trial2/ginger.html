@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ginger plant</title>
+    <link rel="stylesheet" href="{% static 'css/trop.css' %}">
+    <style>
+      body::after {
+        content: '';
+        position: fixed;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        height: 1000px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.2;
+        z-index: -1;
+        pointer-events: none;
+        background-image: url('{% static "images/ginger4.avif" %}');
+      }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar second-navbar">
+        <ul class="sidebar">
+            <li onclick="hideSidebar()">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#000">
+                    <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                </svg></a>
+            </li>
+            <li><a href="{% url 'homee' %}">HOME</a></li>
+            <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+            <li><a href="{% url 'outdoor' %}">Outdoor Plant</a></li>
+            <li><a href="{% url 'homereme' %}">Home Remedies</a></li>
+            <li><a href="{% url 'myplants' %}">Go to My Plants</a></li>
+            <li><a href="{% url 'blogs' %}">BLOGS</a></li>
+        </ul>
+    </nav>
+</header>
+
+<header id="title">
+    Ginger Plant 🌿
+</header>
+
+<section>
+  <h3>Images & Descriptions</h3>
+  <div class="image-gallery">
+    <div class="image-card">
+      <img src="{% static 'images/ginger1.webp' %}" alt="Young Ginger Plant" />
+      <p>A sprouting ginger plant in rich, loamy soil, with its slender green shoots rising upward and fresh growth just peeking through.</p>
+    </div>
+    <div class="image-card">
+      <img src="{% static 'images/ginger2.jpg' %}" alt="Ginger Leaves" />
+      <p>Healthy ginger plants thriving in a shaded tropical patch, their lush, lance-shaped leaves glowing with morning dew.</p>
+    </div>
+    <div class="image-card">
+      <img src="{% static 'images/ginger3.jpg' %}" alt="Harvested Ginger" />
+      <p>Freshly harvested ginger rhizomes, earthy and golden, bursting with flavor and healing properties from the underground roots.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h3>Fun Facts About Ginger Plants 🌿</h3>
+  <div class="fun-facts">
+    <ul>
+      <li><strong>Not Just a Root!</strong> 🌱 Ginger is actually a rhizome — an underground stem — not a root as many think!</li>
+      <li><strong>Ancient Spice:</strong> 🕰️ Ginger has been used in traditional medicine and cooking for over 5,000 years across many cultures.</li>
+      <li><strong>Healing Hero:</strong> 💚 Known for its anti-inflammatory and anti-nausea properties, ginger is a natural remedy powerhouse.</li>
+      <li><strong>Easy to Grow:</strong>  🌞 Ginger can be grown from a grocery store piece — just plant it in warm, moist soil and watch it sprout!</li>
+      <li><strong>Loves the Shade:</strong> 🌤️ Unlike many plants, ginger prefers partial shade and humid conditions over direct sun.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h3>Steps to Grow Ginger Plant Outdoors</h3>
+  <ol>
+    <li><strong>Pick a Warm, Semi-Shaded Spot:</strong><br>Ginger thrives in warm, humid areas with filtered sunlight or partial shade.</li>
+    <li><strong>Choose Fresh Ginger Rhizomes:</strong><br>Use a healthy root with visible ‘eyes’ — organic store-bought works too.</li>
+    <li><strong>Prep and Soak the Rhizome:</strong><br>Cut into smaller pieces with at least one eye. Soak overnight.</li>
+    <li><strong>Plant in Loose, Rich Soil:</strong><br>Plant 2–4 inches deep in compost-rich, well-drained soil.</li>
+    <li><strong>Water Lightly but Consistently:</strong><br>Keep moist (not soggy). Avoid standing water.</li>
+    <li><strong>Mulch to Keep Moisture In:</strong><br>Use straw or leaf mulch to reduce evaporation.</li>
+    <li><strong>Feed Every Few Weeks:</strong><br>Compost tea or organic fertilizer helps it thrive.</li>
+    <li><strong>Be Patient & Watch It Grow:</strong><br>Full maturity takes 8–10 months. Shoots appear in weeks.</li>
+    <li><strong>Harvest with Care:</strong><br>Gently dig and harvest what you need.</li>
+    <li><strong>Regrow from Leftovers:</strong><br>Replant rhizome pieces to restart the cycle!</li>
+  </ol>
+</section>
+
+
+<section>
+  <h3>FAQs</h3>
+  <div class="faq-item">
+    <div class="faq-question">🌱 How long does ginger take to grow?</div>
+    <div class="faq-answer">Ginger typically takes 8 to 10 months to reach full maturity, but you can start harvesting baby ginger after 4–5 months.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">☀️ Does ginger need full sun to grow?</div>
+    <div class="faq-answer">Not necessarily! Ginger prefers partial shade or filtered sunlight. Too much direct sun can scorch the leaves.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-question">💧 How often should I water a ginger plant?</div>
+    <div class="faq-answer">Water regularly to keep the soil lightly moist. Avoid overwatering — soggy soil can rot the rhizomes.</div>
+  </div>
+</section>
+
+<script>
+    // Toggle FAQ answers
+    document.querySelectorAll('.faq-question').forEach((question) => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            answer.style.display = (answer.style.display === 'block') ? 'none' : 'block';
+        });
+    });
+
+    // for bookmark
+    function savePlant(plantPage) {
+    fetch('/save-plant/', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'X-CSRFToken': getCSRFToken()
+        },
+        body: `plant_name=Ginger&plant_page=${plantPage}`
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === "success") {
+            alert("🌿 Ginger saved to your garden!");
+        } else {
+            alert("⚠️ Failed to save the plant.");
+        }
+    });
+}
+
+function getCSRFToken() {
+    let cookie = document.cookie.split('; ').find(row => row.startsWith('csrftoken'));
+    return cookie ? cookie.split('=')[1] : '';
+}
+</script>
+
+<footer>
+    <p>Ready to grow your own Ginger plant? 🌿</p>
+    <button onclick="savePlant('ginger.html')"> 🌴 Plant Now</button>
+</footer>
+
+</body>
+</html>

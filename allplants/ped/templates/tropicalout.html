@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tropical Plants</title>
+    <link rel="stylesheet" href="{% static 'css/trop.css' %}">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar second-navbar">
+            <ul class="sidebar">
+                <li onclick="hideSidebar()"><a href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="26px" viewBox="0 -960 960 960" width="26px" fill="#000">
+                        <path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/>
+                    </svg></a>
+                </li>
+                <li><a href="{% url 'homee' %}">Home</a></li>
+                <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+                <li><a href="{% url 'outdoor' %}">Outdoor Plants</a></li>
+                <li><a href="{% url 'homereme' %}">Home Remedies</a></li>
+                <li><a href="{% url 'myplants' %}">My Plants</a></li>
+                <li><a href="{% url 'blogs' %}">Blogs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="outdoor-plants">
+        <h2>Tropical Plants</h2>
+        <p>Explore our collection of outdoor tropical plants:</p>
+
+        <div class="plant-container">
+
+            <a href="{% url 'banana' %}">
+                <div class="plant" style="background-image: url('{% static "images/banana.jpg" %}');">
+                    <div class="plant-name">Banana Plant <br>(Musa spp.)</div>
+                </div>
+            </a>
+
+            <a href="{% url 'coconut' %}">
+                <div class="plant" style="background-image: url('{% static "images/coconut.jpg" %}');">
+                    <div class="plant-name">Coconut Palm <br>(Cocos nucifera)</div>
+                </div>
+            </a>
+
+            <a href="{% url 'hibiscus' %}">
+                <div class="plant" style="background-image: url('{% static "images/hibiscus.jpg" %}');">
+                    <div class="plant-name">Hibiscus <br>(Hibiscus rosa-sinensis)</div>
+                </div>
+            </a>
+
+            <a href="{% url 'papaya' %}">
+                <div class="plant" style="background-image: url('{% static "images/papaya.jpg" %}');">
+                    <div class="plant-name">Papaya <br>(Carica papaya)</div>
+                </div>
+            </a>
+
+            <a href="{% url 'ginger' %}">
+                <div class="plant" style="background-image: url('{% static "images/ginger.jpg" %}');">
+                    <div class="plant-name">Ginger <br>(Zingiber officinale)</div>
+                </div>
+            </a>
+
+            <a href="{% url 'bougainvillea' %}">
+                <div class="plant" style="background-image: url('{% static "images/bougainvillea.jpg" %}');">
+                    <div class="plant-name">Bougainvillea <br>(Bougainvillea glabra)</div>
+                </div>
+            </a>
+
+            <a href="{% url 'plumeria' %}">
+                <div class="plant" style="background-image: url('{% static "images/Plumeria.jpg" %}');">
+                    <div class="plant-name">Plumeria <br>(Plumeria spp.)</div>
+                </div>
+            </a>
+
+            <a href="{% url 'heliconia' %}">
+                <div class="plant" style="background-image: url('{% static "images/Heliconia.jpg" %}');">
+                    <div class="plant-name">Heliconia <br>(Heliconia spp.)</div>
+                </div>
+            </a>
+
+            <a href="{% url 'paradise' %}">
+                <div class="plant" style="background-image: url('{% static "images/Paradise.webp" %}');">
+                    <div class="plant-name">Bird of Paradise <br>(Strelitzia reginae)</div>
+                </div>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- Optional JS for sidebar toggle -->
+    <script>
+        function hideSidebar() {
+            document.querySelector('.sidebar').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

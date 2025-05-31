@@ -1,0 +1,266 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/INDOOR.css' %}?v=2">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+        /* ✅ General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f2ce94;
+            color: #333;
+        }
+
+        /* ✅ Wider Wrapper with Soft Shadows */
+        .climate-wrapper {
+            max-width: 1400px;  /* Wider Box */
+            margin: 60px auto;
+            padding: 100px 60px;  
+            background: #ffffff;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            transition: 0.4s;
+        }
+
+        .climate-wrapper:hover {
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ✅ Zig-Zag Grid Layout */
+        .climate-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        /* ✅ Stylish Box */
+        .box-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .box {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            background: #ffffff;
+            width: 100%;
+            height: 340px;
+        }
+
+        .box:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .box:hover img {
+            transform: scale(1.1);
+        }
+
+        /* ✅ Climate Name Outside */
+        .climate-name {
+            margin-top: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #444;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .box-wrapper:hover .climate-name {
+            color: #0077cc;
+            transform: scale(1.1);
+        }
+
+        /* ✅ Overlay with Smooth Hover Effects */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s, transform 0.4s;
+        }
+
+        .box:hover .overlay {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* .text2 {
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: center;
+            padding: 0 20px;
+        } */
+
+        /* ✅ Zig-Zag Alternating Effect */
+        .box-wrapper:nth-child(odd) .box {
+            transform: translateX(-40px);
+        }
+
+        .box-wrapper:nth-child(even) .box {
+            transform: translateX(40px);
+        }
+
+        .box-wrapper:hover .box {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        /* ✅ Responsive Design */
+        @media (max-width: 768px) {
+            .climate-container {
+                grid-template-columns: 1fr;
+            }
+
+            .box-wrapper:nth-child(odd) .box, 
+            .box-wrapper:nth-child(even) .box {
+                transform: translateX(0); /* Remove zig-zag effect on small screens */
+            }
+
+            .box:hover {
+                transform: scale(1.03);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar second-navbar">
+            <ul>
+              <li><a href="{% url 'homee' %}">Home</a></li>
+              <li><a href="{% url 'indoor' %}">Indoor Plants</a></li>
+              <li><a href="{% url 'outdoor' %}">Outdoor Plants</a></li>
+              <li><a href="{% url 'myplants' %}">My Plants</a></li>
+              <li><a href="{% url 'homereme' %}">Home Remedies</a></li>
+              <li><a href="{% url 'blogs' %}">Blogs</a></li>
+              <li><a href="{% url 'login' %}">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+<!-- ✅ Wrapper Box -->
+{% load static %}
+<h2 class="climate-title">CLIMATIC CONDITIONS</h2>
+<div class="climate-wrapper">
+    <div class="climate-container">
+
+        <!-- Tropical -->
+        <div class="box-wrapper">
+            <div class="box">
+                <a href="{% url 'tropical1' %}">
+                    <img src="{% static 'images/rf.jpg' %}" alt="Tropical">
+                    <div class="overlay">
+                        <div class="explosive-text">Rainforest Realm</div>
+                        <div class="text2">Hot and humid all year with a rainy season and dry season.</div>
+                    </div>
+                </a>
+            </div>
+            <div class="climate-name">Tropical</div>
+        </div>
+
+        <!-- Dry -->
+        <div class="box-wrapper">
+            <div class="box">
+                <a href="s2.html">
+                    <img src="{% static 'images/df.jpg' %}" alt="Dry">
+                    <div class="overlay">
+                        <div class="explosive-text"> Dune Kingdom </div>
+                        <div class="text2">Hot or cold with very little rain, leading to dry conditions.</div>
+                    </div>
+                </a>
+            </div>
+            <div class="climate-name">Dry</div>
+        </div>
+
+        <!-- Temperate -->
+        <div class="box-wrapper">
+            <div class="box">
+                <a href="s3.html">
+                    <img src="{% static 'images/tp.jpg' %}" alt="Temperate">
+                    <div class="overlay">
+                        <div class="explosive-text"> Evergrove Realm </div>
+                        <div class="text2">Warm summers, cool winters, and moderate rainfall.</div>
+                    </div>
+                </a>
+            </div>
+            <div class="climate-name">Temperate</div>
+        </div>
+
+        <!-- Continental -->
+        <div class="box-wrapper">
+            <div class="box">
+                <a href="s4.html">
+                    <img src="{% static 'images/cn.JPG' %}" alt="Continental">
+                    <div class="overlay">
+                        <div class="explosive-text"> Ironwood Realm </div>
+                        <div class="text2">Hot summers, cold winters, and moderate rainfall.</div>
+                    </div>
+                </a>
+            </div>
+            <div class="climate-name">Continental</div>
+        </div>
+
+        <!-- Polar -->
+        <div class="box-wrapper">
+            <div class="box">
+                <a href="s5.html">
+                    <img src="{% static 'images/pl.webp' %}" alt="Polar">
+                    <div class="overlay">
+                        <div class="explosive-text"> Frost-Bound Kingdom </div>
+                        <div class="text2">Extremely cold all year, with long winters and short summers.</div>
+                    </div>
+                </a>
+            </div>
+            <div class="climate-name">Polar</div>
+        </div>
+
+        <!-- Highland -->
+        <div class="box-wrapper">
+            <div class="box">
+                <a href="s4.html">
+                    <img src="{% static 'images/hl.webp' %}" alt="Highland">
+                    <div class="overlay">
+                        <div class="explosive-text"> Sky-Crest Kingdom </div>
+                        <div class="text2">Highland climates are cooler with varying rain by elevation.</div>
+                    </div>
+                </a>
+            </div>
+            <div class="climate-name">Highland</div>
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>
