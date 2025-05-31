@@ -10,14 +10,15 @@ This project is a Django web application containerized with Docker and deployed 
 3. Allow inbound traffic on:
    - **Port 22** (SSH)
    - **Port 8000** (Web access)
+![Screenshot 2025-05-31 104243](https://github.com/user-attachments/assets/77f6f8fa-82b1-41d8-9ab2-f936b49c9f24)
 
 ---
 
 ###  Step 2: SSH Into EC2
 
----
-
 ssh -i your-key.pem ubuntu@your-ec2-public-ip
+
+---
 
 ### Step 3: Install Docker and Docker Compose
 sudo apt update
