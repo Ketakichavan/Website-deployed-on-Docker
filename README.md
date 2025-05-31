@@ -97,5 +97,5 @@ docker-compose up --build
 ---
 
 ### Step 8 - Access Your Project
-Open your browser and go to:
-  http://your-ec2-public-ip:8000/
+Open your browser and paste the below link:
+  http://'your-ec2-public-ip':8000/
