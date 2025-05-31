@@ -103,6 +103,7 @@ From your local terminal:
 
 ### Step 7 - Build and Run Docker on EC2
 cd proj/allplants/
+
 docker-compose up --build
 
 ![image](https://github.com/user-attachments/assets/c7252f53-0bbf-4f0b-b36b-296772d30c59)
@@ -112,6 +113,7 @@ docker-compose up --build
 
 ### Step 8 - Access Your Project
 Open your browser and paste the below link:
+
   http://'your-ec2-public-ip':8000/
   ![image](https://github.com/user-attachments/assets/018d17d0-5087-4dbd-b2e0-85d947324a5a)
 
