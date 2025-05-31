@@ -23,8 +23,11 @@ ssh -i your-key.pem ubuntu@your-ec2-public-ip
 
 ### Step 3: Install Docker and Docker Compose
 sudo apt update
+
 sudo apt install -y docker.io docker-compose
+
 sudo usermod -aG docker ubuntu
+
 newgrp docker
 
 ![image](https://github.com/user-attachments/assets/14dde699-e9cb-4445-bb9b-7e58805dc893)
