@@ -15,9 +15,7 @@ This project is a Django web application containerized with Docker and deployed 
 ---
 
 ###  Step 2: SSH Into EC2
-
 ssh -i your-key.pem ubuntu@your-ec2-public-ip
-
 ![image](https://github.com/user-attachments/assets/b24e0707-4489-4db6-8bf3-5e9a9dab1491)
 
 
@@ -96,7 +94,6 @@ Temporarily allow all hosts:
 ### Step 6 - Copy Project to EC2
 From your local terminal:
   scp -i "your/path/to/key.pem" -r "project/folder/path" ubuntu@your-ec2-public-ip:~/
-
   ![image](https://github.com/user-attachments/assets/23175679-9004-4f75-a591-a213619d0d69)
 
 ---
