@@ -18,6 +18,9 @@ This project is a Django web application containerized with Docker and deployed 
 
 ssh -i your-key.pem ubuntu@your-ec2-public-ip
 
+![image](https://github.com/user-attachments/assets/b24e0707-4489-4db6-8bf3-5e9a9dab1491)
+
+
 ---
 
 ### Step 3: Install Docker and Docker Compose
@@ -25,6 +28,8 @@ sudo apt update
 sudo apt install -y docker.io docker-compose
 sudo usermod -aG docker ubuntu
 newgrp docker
+
+![image](https://github.com/user-attachments/assets/14dde699-e9cb-4445-bb9b-7e58805dc893)
 
 ---
 
@@ -83,20 +88,30 @@ Create the following structure inside your local project directory:
 Temporarily allow all hosts:
   ALLOWED_HOSTS = ['*']
 
+  ![image](https://github.com/user-attachments/assets/9d758b2f-52d8-48b0-9caa-540e3ad09730)
+
+
 ---
 
 ### Step 6 - Copy Project to EC2
 From your local terminal:
   scp -i "your/path/to/key.pem" -r "project/folder/path" ubuntu@your-ec2-public-ip:~/
 
+  ![image](https://github.com/user-attachments/assets/23175679-9004-4f75-a591-a213619d0d69)
+
 ---
 
 ### Step 7 - Build and Run Docker on EC2
-cd proj/
+cd proj/allplants/
 docker-compose up --build
+
+![image](https://github.com/user-attachments/assets/c7252f53-0bbf-4f0b-b36b-296772d30c59)
+
 
 ---
 
 ### Step 8 - Access Your Project
 Open your browser and paste the below link:
   http://'your-ec2-public-ip':8000/
+  ![image](https://github.com/user-attachments/assets/018d17d0-5087-4dbd-b2e0-85d947324a5a)
+
