@@ -83,6 +83,11 @@ Create the following structure inside your local project directory:
         volumes:
           - .:/code
 
+It should look like this:
+
+![image](https://github.com/user-attachments/assets/f7d9baf2-acb3-4b26-9989-028b800909f2)
+
+
 ---
 
 ### Step 5 - settings.py Configuration
